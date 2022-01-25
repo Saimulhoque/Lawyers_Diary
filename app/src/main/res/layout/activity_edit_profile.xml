@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_lite"
+    tools:context=".ui.editprofile.EditProfileActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="@dimen/small_padding"
+        app:title="@string/edit_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_padding"
+        app:cardCornerRadius="@dimen/medium_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/large_padding">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_image"
+                android:src="@drawable/user_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/profile_pic"
+                app:civ_border_width="2dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_username"
+                style="@style/textinput_layout_style"
+                android:layout_marginTop="@dimen/large_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_image">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_useremail"
+                style="@style/textinput_layout_style"
+                app:layout_constraintEnd_toEndOf="@id/ti_username"
+                app:layout_constraintStart_toStartOf="@id/ti_username"
+                app:layout_constraintTop_toBottomOf="@id/ti_username">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_useremail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_userphone"
+                style="@style/textinput_layout_style"
+                app:layout_constraintEnd_toEndOf="@id/ti_useremail"
+                app:layout_constraintStart_toStartOf="@id/ti_useremail"
+                app:layout_constraintTop_toBottomOf="@id/ti_useremail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_userphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/phone"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_barname"
+                style="@style/textinput_layout_style"
+                app:layout_constraintEnd_toEndOf="@id/ti_userphone"
+                app:layout_constraintStart_toStartOf="@id/ti_userphone"
+                app:layout_constraintTop_toBottomOf="@id/ti_userphone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_barname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/bar_association_name" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_mem_no"
+                style="@style/textinput_layout_style"
+                app:layout_constraintEnd_toEndOf="@id/ti_barname"
+                app:layout_constraintStart_toStartOf="@id/ti_barname"
+                app:layout_constraintTop_toBottomOf="@id/ti_barname">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_mem_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/membership_no" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_chamber_address"
+                style="@style/textinput_layout_style"
+                app:layout_constraintEnd_toEndOf="@id/ti_mem_no"
+                app:layout_constraintStart_toStartOf="@id/ti_mem_no"
+                app:layout_constraintTop_toBottomOf="@id/ti_mem_no">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_chamber_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/chamber_address" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/update_profile"
+                style="@style/button_style"
+                android:text="@string/update_profile"
+                app:layout_constraintEnd_toEndOf="@id/ti_chamber_address"
+                app:layout_constraintStart_toStartOf="@id/ti_chamber_address"
+                app:layout_constraintTop_toBottomOf="@id/ti_chamber_address" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

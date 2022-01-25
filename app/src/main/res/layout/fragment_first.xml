@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.addcase.FirstFragment"
+    android:background="@color/gray_lite"
+    android:padding="@dimen/medium_padding">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_casetitle"
+        style="@style/textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/case_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/case_title" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_casenumber"
+        style="@style/textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ti_casetitle"
+        app:layout_constraintStart_toStartOf="@id/ti_casetitle"
+        app:layout_constraintTop_toBottomOf="@id/ti_casetitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/case_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/case_number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_casefileno"
+        style="@style/textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ti_casenumber"
+        app:layout_constraintStart_toStartOf="@id/ti_casenumber"
+        app:layout_constraintTop_toBottomOf="@id/ti_casenumber">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/case_file_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/case_file_number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_casetype"
+        style="@style/dropdown_textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ti_casefileno"
+        app:layout_constraintStart_toStartOf="@id/ti_casefileno"
+        app:layout_constraintTop_toBottomOf="@id/ti_casefileno">
+
+        <AutoCompleteTextView
+            android:id="@+id/case_type"
+            style="@style/autocomplete_textview_style"
+            android:hint="@string/case_type" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_casestartdate"
+        style="@style/textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ti_casetype"
+        app:layout_constraintStart_toStartOf="@id/ti_casetype"
+        app:layout_constraintTop_toBottomOf="@id/ti_casetype">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/case_start_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/case_starting_date" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_courtname"
+        style="@style/dropdown_textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ti_casestartdate"
+        app:layout_constraintStart_toStartOf="@id/ti_casestartdate"
+        app:layout_constraintTop_toBottomOf="@id/ti_casestartdate">
+
+        <AutoCompleteTextView
+            android:id="@+id/court_name"
+            style="@style/autocomplete_textview_style"
+            android:hint="@string/court_name" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_judgename"
+        style="@style/textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ti_courtname"
+        app:layout_constraintStart_toStartOf="@id/ti_courtname"
+        app:layout_constraintTop_toBottomOf="@id/ti_courtname">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/judge_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/judge_name" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_clientname"
+        style="@style/dropdown_textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ti_judgename"
+        app:layout_constraintStart_toStartOf="@id/ti_judgename"
+        app:layout_constraintTop_toBottomOf="@id/ti_judgename">
+
+        <AutoCompleteTextView
+            android:id="@+id/client_name"
+            style="@style/autocomplete_textview_style"
+            android:hint="@string/client_name" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

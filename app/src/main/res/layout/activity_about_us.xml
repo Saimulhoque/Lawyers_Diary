@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_lite"
+    tools:context=".ui.aboutus.AboutUsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:title="@string/about_us"
+        android:elevation="@dimen/small_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/main_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_padding"
+        app:cardCornerRadius="@dimen/medium_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/company_info_view"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/black"/>
+
+            <TextView
+                android:id="@+id/company_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/company_information"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/small_padding"
+                android:textSize="@dimen/medium_text" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/company_image"
+                android:layout_width="@dimen/company_logo"
+                android:layout_height="@dimen/company_logo"
+                android:src="@drawable/forbit_logo"
+                android:layout_marginTop="@dimen/large_padding"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/company_info_view"/>
+
+            <TextView
+                android:id="@+id/company_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/company_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/forbit_limited"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/company_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/company_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/forbitbd_gmail_com"
+                android:textAlignment="center"
+                android:textStyle="bold"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="@dimen/medium_padding"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/company_email"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/dev_info_view"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/main_card"
+        app:layout_constraintTop_toBottomOf="@id/main_card"
+        app:layout_constraintEnd_toEndOf="@id/main_card"
+        android:layout_marginTop="@dimen/large_padding"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/dev_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/dev_info_view"
+        app:layout_constraintTop_toTopOf="@id/dev_info_view"
+        app:layout_constraintEnd_toEndOf="@id/dev_info_view"
+        android:text="@string/developer_information"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/small_padding"
+        android:textSize="@dimen/medium_text" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dev_one"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_padding"
+        app:cardCornerRadius="@dimen/small_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dev_info_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/dev_one_image"
+                android:layout_width="@dimen/company_logo"
+                android:layout_height="@dimen/company_logo"
+                android:src="@drawable/user_photo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/dev_one_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/dev_one_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/dev_one_image"
+                android:layout_marginLeft="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/medium_padding"
+                android:text="@string/sohel_ahmed"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/dev_one_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/dev_one_name"
+                app:layout_constraintTop_toBottomOf="@+id/dev_one_name"
+                android:text="@string/sohel_ahmed2178_gmail_com"
+                android:textStyle="bold"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dev_two"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_padding"
+        app:cardCornerRadius="@dimen/small_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dev_one">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/dev_two_image"
+                android:layout_width="@dimen/company_logo"
+                android:layout_height="@dimen/company_logo"
+                android:src="@drawable/abid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/dev_two_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/dev_two_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/dev_two_image"
+                android:layout_marginLeft="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/medium_padding"
+                android:text="@string/abid_ahmed_sobhan"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/dev_two_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/dev_two_name"
+                app:layout_constraintTop_toBottomOf="@+id/dev_two_name"
+                android:text="@string/abidasobhan19_gmail_com"
+                android:textStyle="bold"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dev_three"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/medium_padding"
+        app:cardCornerRadius="@dimen/small_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dev_two">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/dev_three_image"
+                android:layout_width="@dimen/company_logo"
+                android:layout_height="@dimen/company_logo"
+                android:src="@drawable/saimul"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/dev_three_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/dev_three_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/dev_three_image"
+                android:layout_marginLeft="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/medium_padding"
+                android:text="@string/saimul_hoque"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/dev_three_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/dev_three_name"
+                app:layout_constraintTop_toBottomOf="@+id/dev_three_name"
+                android:text="@string/saimulhoque8214_gmail_com"
+                android:textStyle="bold"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/support_info_view"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/dev_three"
+        app:layout_constraintTop_toBottomOf="@id/dev_three"
+        app:layout_constraintEnd_toEndOf="@id/dev_three"
+        android:background="@color/black"
+        android:layout_marginTop="@dimen/large_padding"/>
+
+    <TextView
+        android:id="@+id/support_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/support_info_view"
+        app:layout_constraintTop_toTopOf="@id/support_info_view"
+        app:layout_constraintEnd_toEndOf="@id/support_info_view"
+        android:text="In Overall Co-Operation"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_marginTop="@dimen/small_padding"
+        android:textSize="@dimen/medium_text" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/co_operation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/small_padding"
+        android:layout_marginTop="@dimen/medium_padding"
+        app:layout_constraintEnd_toEndOf="@id/support_info_view"
+        app:layout_constraintStart_toStartOf="@id/support_info_view"
+        app:layout_constraintTop_toBottomOf="@id/support_info_view">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/co_operation_image"
+                android:layout_width="@dimen/company_logo"
+                android:layout_height="@dimen/company_logo"
+                android:src="@drawable/user_photo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/co_operation_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/co_operation_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/co_operation_image"
+                android:layout_marginLeft="@dimen/medium_padding"
+                android:layout_marginTop="@dimen/medium_padding"
+                android:text="Rayhan Kabir"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/co_operation_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/co_operation_name"
+                app:layout_constraintTop_toBottomOf="@+id/co_operation_name"
+                android:text="@string/saimulhoque8214_gmail_com"
+                android:textStyle="bold"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

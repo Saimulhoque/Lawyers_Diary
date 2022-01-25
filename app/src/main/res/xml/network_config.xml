@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network_config xmlns:android="http://schemas.android.com/apk/res/android">
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">103.144.201.114</domain>
+    </domain-config>
+</network_config>
