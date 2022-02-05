@@ -53,7 +53,7 @@
         <item name="cornerSizeTopLeft">10dp</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerSizeBottomLeft">10dp</item>
-        <item name="cornerSizeBottomRight">10dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
     <style name="ShapeAppearance.MyApp.MediumComponent.card_four" parent="ShapeAppearance.MaterialComponents.MediumComponent">
@@ -62,8 +62,51 @@
         <item name="cornerFamilyBottomRight">rounded</item>
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+
+    <style name="ShapeAppearance.MyApp.MediumComponent.card_five" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerSizeBottomLeft">10dp</item>
         <item name="cornerSizeBottomRight">10dp</item>
     </style>
+
+    <style name="ShapeAppearance.MyApp.MediumComponent.card_six" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">10dp</item>
+        <item name="cornerSizeBottomRight">10dp</item>
+    </style>
+
+<!--    <style name="MyTheme" parent="android:Theme.Holo.Dialog">-->
+<!--        <item name="android:alertDialogStyle">@style/CustomAlertDialogStyle</item>-->
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+<!--        <item name="android:textColorPrimary">#FFFFFF</item>-->
+<!--        <item name="android:backgroundDimEnabled">false</item>-->
+<!--        <item name="android:textColor">#FFFFFF</item>-->
+<!--        <item name="android:textStyle">normal</item>-->
+<!--        <item name="android:textSize">12sp</item>-->
+<!--    </style>-->
+
+<!--    <style name="CustomAlertDialogStyle">-->
+<!--        <item name="android:bottomBright">@android:color/white</item>-->
+<!--        <item name="android:bottomDark">@color/colorAccent</item>-->
+<!--        <item name="android:bottomMedium">@android:color/white</item>-->
+<!--        <item name="android:centerBright">@android:color/transparent</item>-->
+<!--        <item name="android:centerDark">@color/colorAccent</item>-->
+<!--        <item name="android:centerMedium">@color/colorAccent</item>-->
+<!--        <item name="android:fullBright">@color/colorAccent</item>-->
+<!--        <item name="android:fullDark">@android:color/transparent</item>-->
+<!--        <item name="android:topBright">@android:color/transparent</item>-->
+<!--        <item name="android:topDark">@android:color/transparent</item>-->
+<!--    </style>-->
 
 </resources>

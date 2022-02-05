@@ -239,7 +239,7 @@
                 android:id="@+id/dev_three_image"
                 android:layout_width="@dimen/company_logo"
                 android:layout_height="@dimen/company_logo"
-                android:src="@drawable/saimul"
+                android:src="@drawable/user_photo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
 

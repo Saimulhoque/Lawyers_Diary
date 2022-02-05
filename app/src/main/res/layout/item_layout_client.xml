@@ -50,7 +50,7 @@
             app:layout_constraintTop_toBottomOf="@+id/client_name" />
 
         <TextView
-            android:id="@+id/client_reg_date"
+            android:id="@+id/client_address"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="01/01/2022"
@@ -64,8 +64,8 @@
             android:layout_height="wrap_content"
             android:text="saimulhoque8214@gmail.com"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/client_reg_date"
-            app:layout_constraintTop_toBottomOf="@+id/client_reg_date" />
+            app:layout_constraintStart_toStartOf="@id/client_address"
+            app:layout_constraintTop_toBottomOf="@+id/client_address" />
 
         <Space
             android:layout_width="0dp"

@@ -20,21 +20,21 @@ public class PrebaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
-    private void showProgressDialog() {
-        if (mProgressDialog == null) {
-            mProgressDialog = new ProgressDialog(this, R.style.MyTheme);
-            mProgressDialog.setCancelable(false);
-            mProgressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Large_Inverse);
-            mProgressDialog.setIndeterminate(true);
-        }
-
-        mProgressDialog.show();
-    }
-
-    public void hideProgressDialog() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.dismiss();
-        }
-    }
+//    private void showProgressDialog() {
+//        if (mProgressDialog == null) {
+//            mProgressDialog = new ProgressDialog(this, R.style.MyTheme);
+//            mProgressDialog.setCancelable(false);
+//            mProgressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Large_Inverse);
+//            mProgressDialog.setIndeterminate(true);
+//        }
+//
+//        mProgressDialog.show();
+//    }
+//
+//    public void hideProgressDialog() {
+//        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+//            mProgressDialog.dismiss();
+//        }
+//    }
 
 }

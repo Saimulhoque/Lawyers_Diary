@@ -2,6 +2,7 @@ package com.forbitbd.lawyersdiary.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.forbitbd.lawyersdiary.R;
+import com.forbitbd.lawyersdiary.model.Client;
 import com.forbitbd.lawyersdiary.model.Features;
 import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
 import com.forbitbd.lawyersdiary.ui.addcasetype.AddCaseTypeFragment;
@@ -22,18 +24,21 @@ import com.forbitbd.lawyersdiary.ui.calender.CalenderActivity;
 import com.forbitbd.lawyersdiary.ui.cases.CasesActivity;
 import com.forbitbd.lawyersdiary.ui.clients.ClientsActivity;
 import com.forbitbd.lawyersdiary.ui.evidence.EvidenceActivity;
-import com.forbitbd.lawyersdiary.ui.features.FeatureAdapter;
+import com.forbitbd.lawyersdiary.ui.main.Communicator;
+import com.forbitbd.lawyersdiary.utils.AppPreference;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment implements View.OnClickListener, HomeContract.View {
 
-    private TextView tvCaseAdded, tvScheduleToday, tvActiveCases, tvCaseClosed;
+    private TextView tvCaseAdded, tvScheduleToday, tvActiveCases, tvCaseClosed, tvTotalClients, tvCaseTypes;
     private MaterialCardView cardCaseAdded, cardScheduleToday, cardActiveCases, cardCaseClosed;
     private RecyclerView recyclerView;
     private ArrayList<Features> featuresList;
     private FeatureAdapter adapter;
+    private Communicator communicator;
+    private HomePresenter mPresenter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -42,7 +47,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        communicator = (Communicator) getActivity();
+        mPresenter = new HomePresenter(this);
     }
 
     @Override
@@ -51,7 +57,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        String lawyerId = AppPreference.getInstance(getContext()).getLawyer().get_id();
+
         initView(view);
+        mPresenter.getDashboardInfo(lawyerId);
 
         return view;
     }
@@ -61,6 +70,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         tvScheduleToday = view.findViewById(R.id.schedule_today);
         tvActiveCases = view.findViewById(R.id.active_cases);
         tvCaseClosed = view.findViewById(R.id.closed_cases);
+        tvTotalClients = view.findViewById(R.id.total_clients);
+        tvCaseTypes = view.findViewById(R.id.case_types);
 
         cardCaseAdded = view.findViewById(R.id.card_case_added);
         cardScheduleToday = view.findViewById(R.id.card_schedule_today);
@@ -76,84 +87,41 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
         featuresList = new ArrayList<>();
-        featuresList.add(new Features(R.drawable.add_user,"Add Client"));
-        featuresList.add(new Features(R.drawable.add_file,"Add Case"));
+        featuresList.add(new Features(R.drawable.client,"Add Client"));
+        featuresList.add(new Features(R.drawable.add_case,"Add Case"));
         featuresList.add(new Features(R.drawable.court,"Add Court"));
         featuresList.add(new Features(R.drawable.add_case_type,"Add Case Type"));
-        featuresList.add(new Features(R.drawable.client,"Clients"));
+        featuresList.add(new Features(R.drawable.clients,"Clients"));
         featuresList.add(new Features(R.drawable.cases,"Cases"));
         featuresList.add(new Features(R.drawable.appointment,"Appointment"));
-        featuresList.add(new Features(R.drawable.fingerprint,"Evidence"));
+        featuresList.add(new Features(R.drawable.evidence,"Evidence"));
         featuresList.add(new Features(R.drawable.calendar,"Calender"));
 
-        adapter = new FeatureAdapter(featuresList, new FeatureClickListener() {
+        adapter = new FeatureAdapter(featuresList, new FeatureAdapter.FeatureClickListener() {
             @Override
             public void OnItemClick(int adapterPosition) {
                 if (adapterPosition == 0){
-                    startAddClientDialog();
+                    communicator.startAddClientDialog();
                 }else if (adapterPosition == 1){
-                    startAddCaseDialog();
+                    communicator.startAddCaseActivity();
                 }else if (adapterPosition == 2){
-                    startAddCourtDialog();
+                    communicator.startAddCourtDialog();
                 }else if (adapterPosition == 3){
-                    startAddCaseTypeDialog();
+                    communicator.startAddCaseTypeDialog();
                 }else if (adapterPosition == 4){
-                    startClientActivity();
+                    communicator.startClientActivity();
                 }else if (adapterPosition == 5){
-                    startCasesActvity();
+                    communicator.startCasesActivity();
                 }else if (adapterPosition == 6){
-                    startAppointmentActivity();
+                    communicator.startAppointmentActivity();
                 }else if (adapterPosition == 7){
-                    startEvidenceActivity();
+                    communicator.startEvidenceActivity();
                 }else if (adapterPosition == 8){
-                    startCalenderActivity();
+                    communicator.startCalenderActivity();
                 }
             }
         });
-
         recyclerView.setAdapter(adapter);
-    }
-
-    private void startCalenderActivity() {
-        startActivity(new Intent(getContext(), CalenderActivity.class));
-    }
-
-    private void startEvidenceActivity() {
-        startActivity(new Intent(getContext(), EvidenceActivity.class));
-    }
-
-    private void startAppointmentActivity() {
-        startActivity(new Intent(getContext(), AppointmentActivity.class));
-    }
-
-    private void startCasesActvity() {
-        startActivity(new Intent(getContext(), CasesActivity.class));
-    }
-
-    private void startClientActivity() {
-        startActivity(new Intent(getContext(), ClientsActivity.class));
-    }
-
-    private void startAddCourtDialog() {
-        AddCourtFragment addCourtFragment = new AddCourtFragment();
-        addCourtFragment.setCancelable(true);
-        addCourtFragment.show(getChildFragmentManager(),"kkkkkkkk");
-    }
-
-    private void startAddCaseDialog() {
-        startActivity(new Intent(getContext(), AddCaseActivity.class));
-    }
-
-    private void startAddCaseTypeDialog() {
-        AddCaseTypeFragment caseTypeFragment = new AddCaseTypeFragment();
-        caseTypeFragment.setCancelable(true);
-        caseTypeFragment.show(getChildFragmentManager(),"jjjjjjjj");
-    }
-
-    private void startAddClientDialog() {
-        AddClientFragment addClientFragment = new AddClientFragment();
-        addClientFragment.setCancelable(true);
-        addClientFragment.show(getChildFragmentManager(),"jjjjjjjj");
     }
 
     @Override
@@ -168,5 +136,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         }else if (id == R.id.card_closed_cases){
 
         }
+    }
+
+    @Override
+    public void addDashboard(String dashboard) {
+
     }
 }

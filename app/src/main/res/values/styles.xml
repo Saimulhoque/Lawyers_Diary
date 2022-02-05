@@ -9,13 +9,13 @@
 
     <style name="space_style">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
         <item name="android:layout_marginTop">@dimen/xlarge_padding</item>
     </style>
 
     <style name="close_icon_style">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">20dp</item>
         <item name="android:layout_marginRight">@dimen/default_margin</item>
         <item name="android:src">@drawable/ic_baseline_close_24</item>
         <item name="android:tint">@color/white</item>

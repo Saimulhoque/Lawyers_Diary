@@ -42,7 +42,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_image"
-                android:text="Saimul Hoque"
+                android:text="Md Saimul Hoque"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/large_text"
@@ -55,7 +55,7 @@
                 app:layout_constraintStart_toStartOf="@id/user_name"
                 app:layout_constraintEnd_toEndOf="@id/user_name"
                 app:layout_constraintTop_toBottomOf="@id/user_name"
-                android:text="saimulhoque8214@gmail.com"
+                android:text="saimulhoque8217@gmail.com"
                 android:textAlignment="center"
                 android:textColor="@color/black"/>
 

@@ -17,8 +17,9 @@ import com.forbitbd.lawyersdiary.utils.BaseActivity;
 
 import java.util.ArrayList;
 
-public class CasesActivity extends BaseActivity {
+public class CasesActivity extends BaseActivity implements CasesContract.View {
 
+    private CasesPresenter mPresenter;
     private RecyclerView recyclerView;
     private CasesAdapter adapter;
     private ArrayList<Case> casesList;
@@ -28,8 +29,8 @@ public class CasesActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cases);
 
+        mPresenter = new CasesPresenter(this);
         setupToolbar(R.id.toolbar);
-
         initView();
     }
 
@@ -38,9 +39,6 @@ public class CasesActivity extends BaseActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         casesList = new ArrayList<>();
-        casesList.add(new Case("This is the first Case", "Attempt to Murder", "High Court", "30/01/2022", "Abdul Hakim", "Complainant", "Mohammad Ali", "Fakhrul Islam"));
-        casesList.add(new Case("This is the Second Case", "Attempt to Murder", "High Court", "30/01/2022", "Abdul Hakim", "Complainant", "Mohammad Ali", "Fakhrul Islam"));
-        casesList.add(new Case("This is the third Case", "Attempt to Murder", "High Court", "30/01/2022", "Abdul Hakim", "Complainant", "Mohammad Ali", "Fakhrul Islam"));
         adapter = new CasesAdapter(casesList);
         recyclerView.setAdapter(adapter);
     }

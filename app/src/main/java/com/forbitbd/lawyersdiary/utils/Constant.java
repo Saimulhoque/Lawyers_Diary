@@ -1,6 +1,6 @@
 package com.forbitbd.lawyersdiary.utils;
 
 public class Constant {
-
-    public static final String SETTINGS = "SETTINGS";
+    public static final String CLIENT = "CLIENT";
+    public static final String DASHBOARD = "DASHBOARD";
 }

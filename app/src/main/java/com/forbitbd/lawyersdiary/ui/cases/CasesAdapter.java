@@ -67,14 +67,14 @@ public class CasesAdapter extends RecyclerView.Adapter<CasesAdapter.CaseViewHold
         }
 
         public void bind(Case cases) {
-            tvTitle.setText(cases.getCase_title());
-            tvCaseType.setText(cases.getCase_type());
-            tvCourtName.setText(cases.getCourt_name());
-            tvStartingDate.setText(cases.getStarting_date());
-            tvJudgeName.setText(cases.getJudge_name());
-            tvParty.setText(cases.getParty());
-            tvOppPartyName.setText(cases.getOpp_party_name());
-            tvOppLawyer.setText(cases.getOpp_lawyer());
+//            tvTitle.setText(cases.getCase_title());
+//            tvCaseType.setText(cases.getCase_type());
+//            tvCourtName.setText(cases.getCourt_name());
+//            tvStartingDate.setText(cases.getStarting_date());
+//            tvJudgeName.setText(cases.getJudge_name());
+//            tvParty.setText(cases.getParty());
+//            tvOppPartyName.setText(cases.getOpp_party_name());
+//            tvOppLawyer.setText(cases.getOpp_lawyer());
         }
 
         @Override

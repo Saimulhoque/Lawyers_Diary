@@ -79,6 +79,7 @@
             android:id="@+id/case_start_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
             android:hint="@string/case_starting_date" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -98,26 +99,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_judgename"
-        style="@style/textinput_layout_style"
+        android:id="@+id/ti_courtcity"
+        style="@style/dropdown_textinput_layout_style"
         app:layout_constraintEnd_toEndOf="@id/ti_courtname"
         app:layout_constraintStart_toStartOf="@id/ti_courtname"
         app:layout_constraintTop_toBottomOf="@id/ti_courtname">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/judge_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/judge_name" />
+        <AutoCompleteTextView
+            android:id="@+id/court_city"
+            style="@style/autocomplete_textview_style"
+            android:hint="@string/city" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ti_clientname"
         style="@style/dropdown_textinput_layout_style"
-        app:layout_constraintEnd_toEndOf="@id/ti_judgename"
-        app:layout_constraintStart_toStartOf="@id/ti_judgename"
-        app:layout_constraintTop_toBottomOf="@id/ti_judgename">
+        app:layout_constraintEnd_toEndOf="@id/ti_courtcity"
+        app:layout_constraintStart_toStartOf="@id/ti_courtcity"
+        app:layout_constraintTop_toBottomOf="@id/ti_courtcity">
 
         <AutoCompleteTextView
             android:id="@+id/client_name"
@@ -126,7 +126,18 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_com_def"
+        style="@style/dropdown_textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ti_clientname"
+        app:layout_constraintStart_toStartOf="@id/ti_clientname"
+        app:layout_constraintTop_toBottomOf="@id/ti_clientname">
 
+        <AutoCompleteTextView
+            android:id="@+id/com_def"
+            style="@style/autocomplete_textview_style"
+            android:hint="@string/complainant_defendant" />
 
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

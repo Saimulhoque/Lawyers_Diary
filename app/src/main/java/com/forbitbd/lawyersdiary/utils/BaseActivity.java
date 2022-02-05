@@ -1,5 +1,6 @@
 package com.forbitbd.lawyersdiary.utils;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -13,6 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.forbitbd.lawyersdiary.R;
+import com.forbitbd.lawyersdiary.model.Dashboard;
+import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
+import com.forbitbd.lawyersdiary.ui.main.MainActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -34,7 +38,7 @@ public class BaseActivity extends AppCompatActivity {
                 .build();
         client = GoogleSignIn.getClient(this, gso);
         mAuth = FirebaseAuth.getInstance();
-        loadLocale();
+//        loadLocale();
     }
 
     private void setLocale(String language) {
@@ -47,13 +51,13 @@ public class BaseActivity extends AppCompatActivity {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 
-    private void loadLocale() {
-        if (AppPreference.getInstance(this).getLanguage().equals("EN")){
-            setLocale("en");
-        }else {
-            setLocale("bn");
-        }
-    }
+//    private void loadLocale() {
+//        if (AppPreference.getInstance(this).getLanguage().equals("EN")){
+//            setLocale("en");
+//        }else {
+//            setLocale("bn");
+//        }
+//    }
 
     public void loadFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -86,6 +90,14 @@ public class BaseActivity extends AppCompatActivity {
     public void signOut(){
         client.signOut();
         mAuth.signOut();
+    }
+
+
+    public void startAddCaseActivity(Dashboard dashboard) {
+        Intent intent = new Intent(this,AddCaseActivity.class);
+        intent.putExtra(Constant.DASHBOARD,dashboard);
+        startActivity(intent);
+//        startActivity(new Intent(MainActivity.this, AddCaseActivity.class));
     }
 
 }

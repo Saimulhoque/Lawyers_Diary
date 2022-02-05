@@ -87,7 +87,7 @@ public class SignupActivity extends PrebaseActivity implements View.OnClickListe
 
     @Override
     public void hideDialog() {
-        hideProgressDialog();
+//        hideProgressDialog();
     }
 
     @Override

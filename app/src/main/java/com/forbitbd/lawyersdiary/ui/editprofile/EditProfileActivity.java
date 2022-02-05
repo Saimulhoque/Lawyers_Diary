@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.forbitbd.lawyersdiary.R;
+import com.forbitbd.lawyersdiary.utils.AppPreference;
 import com.forbitbd.lawyersdiary.utils.BaseActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -14,7 +15,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class EditProfileActivity extends BaseActivity implements EditProfileContract.View{
 
     private EditProfilePresenter mPresenter;
-
     private TextInputLayout tiName, tiEmail, tiPhone, tiBarName, tiMembershipNo, tiAddress;
     private TextInputEditText etName, etEmail, etPhone, etBarName, etMembershipNo, etAddress;
     private CircleImageView civUserImage;
@@ -25,6 +25,7 @@ public class EditProfileActivity extends BaseActivity implements EditProfileCont
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        mPresenter = new EditProfilePresenter(this);
         setupToolbar(R.id.toolbar);
         initView();
 
@@ -45,6 +46,8 @@ public class EditProfileActivity extends BaseActivity implements EditProfileCont
         etMembershipNo = findViewById(R.id.et_mem_no);
         etAddress = findViewById(R.id.et_chamber_address);
 
+        etEmail.setText(AppPreference.getInstance(this).getLawyer().getEmail());
+
         civUserImage = findViewById(R.id.user_image);
         btnUpdate = findViewById(R.id.update_profile);
 
@@ -56,3 +59,4 @@ public class EditProfileActivity extends BaseActivity implements EditProfileCont
         });
     }
 }
+

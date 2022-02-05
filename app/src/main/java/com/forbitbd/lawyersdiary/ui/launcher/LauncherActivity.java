@@ -14,7 +14,7 @@ public class LauncherActivity extends AppCompatActivity implements LauncherContr
 
     Handler handler = new Handler();
     Runnable runnable;
-    int delay = 500;
+    int delay = 1000;
     private LauncherPresenter mPresenter;
 
     @Override

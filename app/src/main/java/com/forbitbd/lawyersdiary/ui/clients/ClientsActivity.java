@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -20,26 +21,33 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.forbitbd.lawyersdiary.R;
-import com.forbitbd.lawyersdiary.model.Clients;
+import com.forbitbd.lawyersdiary.model.Client;
+import com.forbitbd.lawyersdiary.utils.AppPreference;
 import com.forbitbd.lawyersdiary.utils.BaseActivity;
+import com.forbitbd.lawyersdiary.utils.Constant;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ClientsActivity extends BaseActivity {
+public class ClientsActivity extends BaseActivity implements ClientsContract.View{
 
+    private ClientsPresenter mPresenter;
     private RecyclerView recyclerView;
-    private ArrayList<Clients> clientsList;
     private ClientsAdapter adapter;
+    private ArrayList<Client> clientList;
     private static final int REQUEST_CALL = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clients);
-
+        mPresenter = new ClientsPresenter(this);
         setupToolbar(R.id.toolbar);
-        initView();
 
+        String lawyerId = AppPreference.getInstance(this).getLawyer().get_id();
+
+        mPresenter.getClients(lawyerId);
+        initView();
     }
 
     private void initView() {
@@ -47,29 +55,29 @@ public class ClientsActivity extends BaseActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        clientsList = new ArrayList<>();
-        clientsList.add(new Clients(R.drawable.ic_baseline_person_24,"Saimul Hoque", "01881269553", "01982204475", "Mirpur-1, Dhaka-1216", "saimulhoque8214@gmail.com", "21-11-2000", "31/04/2022"));
-        clientsList.add(new Clients(R.drawable.ic_baseline_person_24,"Abid Ahmed Sobhan", "01821465858", "01982204475", "Mirpur-1, Dhaka-1216", "abidasobhan10@gmail.com", "21-11-2000", "23/03/2022"));
-        clientsList.add(new Clients(R.drawable.ic_baseline_person_24,"Samim Ahmed", "01984748748", "01982204475", "Mirpur-1, Dhaka-1216", "samsul.ent@gmail.com", "21-11-2000", "12/02/2022"));
-        clientsList.add(new Clients(R.drawable.ic_baseline_person_24,"Sazzad Hossain", "01790489484", "01982204475", "Mirpur-1, Dhaka-1216", "sazzadhossain22@gmail.com", "21-11-2000", "12/05/2022"));
-        clientsList.add(new Clients(R.drawable.ic_baseline_person_24,"Abdullah Al Mamum", "0184584785", "01982204475", "Mirpur-1, Dhaka-1216", "smjalsaba420@gmail.com", "21-11-2000", "14/04/2022"));
-        adapter = new ClientsAdapter(clientsList, new ClientsClickListener() {
+        clientList = new ArrayList<>();
+        adapter = new ClientsAdapter(clientList, new ClientsAdapter.ClientsClickListener() {
             @Override
-            public void OnItemClick(Clients clients) {
-
+            public void OnItemClick(Client client) {
+                ClientDialogFragment clientDialogFragment = new ClientDialogFragment();
+                Bundle data = new Bundle();
+                data.putSerializable(Constant.CLIENT,client);
+                clientDialogFragment.setArguments(data);
+                clientDialogFragment.setCancelable(true);
+                clientDialogFragment.show(getSupportFragmentManager(),"JJJJJJJ");
             }
 
             @Override
-            public void OnCallClick(Clients clients) {
-                dialCall(clients.getPhone1(),clients);
+            public void OnCallClick(Client client) {
+                dialCall(client.getPhone_one(),client);
             }
         });
         recyclerView.setAdapter(adapter);
     }
 
-    private void dialCall(String phone1, Clients clients) {
+    private void dialCall(String phone1, Client client) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Did you want to call, "+clients.getName()+"?");
+        builder.setMessage("Did you want to call, "+client.getName()+"?");
         builder.setCancelable(true);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE )!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
@@ -105,5 +113,13 @@ public class ClientsActivity extends BaseActivity {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public void responseClient(List<Client> clientList) {
+        Log.d("JJJJJJ", "onResponse: "+clientList);
+        for (Client x : clientList) {
+            adapter.AddClients(x);
+        }
     }
 }

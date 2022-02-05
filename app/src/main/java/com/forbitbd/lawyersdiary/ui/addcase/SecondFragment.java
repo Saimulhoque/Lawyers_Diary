@@ -1,17 +1,17 @@
 package com.forbitbd.lawyersdiary.ui.addcase;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.forbitbd.lawyersdiary.R;
-import com.forbitbd.lawyersdiary.ui.main.MainActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.stepstone.stepper.BlockingStep;
@@ -21,10 +21,9 @@ import com.stepstone.stepper.VerificationError;
 
 public class SecondFragment extends Fragment implements Step,BlockingStep {
 
-    private TextInputLayout tiParty, tiOppPartyName, tiOppAdvocateName,
-            tiOppAdvocatePhone, tiEvidence, tiCaseHearingDate, tiCaseFees, tiRemarks;
-    private TextInputEditText etParty, etOppPartyName, etOppAdvocateName,
-            etOppAdvocatePhone, etEvidence, etCaseHearingDate, etCaseFees, etRemarks;
+    private AutoCompleteTextView etCaseFees;
+    private TextInputLayout tiOppPartyName, tiOppAdvocateName, tiOppAdvocatePhone, tiCaseFees, tiRemarks;
+    private TextInputEditText etOppPartyName, etOppAdvocateName, etOppAdvocatePhone, etRemarks;
 
     public SecondFragment() {
         // Required empty public constructor
@@ -42,23 +41,22 @@ public class SecondFragment extends Fragment implements Step,BlockingStep {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
-//        tiParty = view.findViewById(R.id.ti_com_def);
-//        tiOppPartyName = view.findViewById(R.id.ti_opp_party_name);
-//        tiOppAdvocateName = view.findViewById(R.id.ti_opp_adv);
-//        tiOppAdvocatePhone = view.findViewById(R.id.ti_opp_adv_phone);
-//        tiEvidence = view.findViewById(R.id.ti_evidence);
-//        tiCaseHearingDate = view.findViewById(R.id.ti_hearing_date);
-//        tiCaseFees = view.findViewById(R.id.ti_case_fees);
-//        tiRemarks = view.findViewById(R.id.ti_remarks);
-//
-//        etParty = view.findViewById(R.id.com_def);
-//        etOppPartyName = view.findViewById(R.id.opp_party_name);
-//        etOppAdvocateName = view.findViewById(R.id.opp_advocate);
-//        etOppAdvocatePhone = view.findViewById(R.id.opp_advocate_phone);
-//        etEvidence = view.findViewById(R.id.case_evidence);
-//        etCaseHearingDate = view.findViewById(R.id.hearing_date);
-//        etCaseFees = view.findViewById(R.id.case_fees);
-//        etRemarks = view.findViewById(R.id.case_remarks);
+        tiOppPartyName = view.findViewById(R.id.ti_opp_party_name);
+        tiOppAdvocateName = view.findViewById(R.id.ti_opp_adv);
+        tiOppAdvocatePhone = view.findViewById(R.id.ti_opp_adv_phone);
+        tiCaseFees = view.findViewById(R.id.ti_case_fees);
+        tiRemarks = view.findViewById(R.id.ti_remarks);
+
+        etOppPartyName = view.findViewById(R.id.opp_party_name);
+        etOppAdvocateName = view.findViewById(R.id.opp_advocate);
+        etOppAdvocatePhone = view.findViewById(R.id.opp_advocate_phone);
+        etCaseFees = view.findViewById(R.id.case_fees);
+        etRemarks = view.findViewById(R.id.case_remarks);
+
+        String[] party = getResources().getStringArray(R.array.fees);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, party);
+        etCaseFees.setText(arrayAdapter.getItem(0).toString(), false);
+        etCaseFees.setAdapter(arrayAdapter);
 
         return view;
     }
@@ -86,11 +84,17 @@ public class SecondFragment extends Fragment implements Step,BlockingStep {
 
     @Override
     public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
-        startActivity(new Intent(getContext(), MainActivity.class));
+
+        String oppPartyName = etOppPartyName.getText().toString().trim();
+        String oppAdvocateName = etOppAdvocateName.getText().toString().trim();
+        String oppAdvocatePhone = etOppAdvocatePhone.getText().toString().trim();
+        String caseFees = etCaseFees.getText().toString().trim();
+        String remarks = etRemarks.getText().toString().trim();
+
     }
 
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
-        getActivity().onBackPressed();
+        callback.goToPrevStep();
     }
 }
