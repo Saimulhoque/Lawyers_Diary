@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Client implements Serializable {
 
+    private String _id;
     private String name;
     private String phone_one;
     private String phone_two;
@@ -78,6 +79,15 @@ public class Client implements Serializable {
 
     public void setLawyer_id(String lawyer_id) {
         this.lawyer_id = lawyer_id;
+    }
+
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     @Override

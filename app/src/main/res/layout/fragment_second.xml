@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.addcase.SecondFragment"
+    tools:context=".ui.addcase.second.SecondFragment"
     android:background="@color/gray_lite"
     android:padding="@dimen/medium_padding">
 
@@ -48,6 +48,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/opp_advocate_phone"
+            android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/opponent_advocate_phone" />
@@ -55,17 +56,17 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ti_case_fees"
-        style="@style/dropdown_textinput_layout_style"
+        style="@style/textinput_layout_style"
         app:layout_constraintEnd_toEndOf="@id/ti_opp_adv_phone"
         app:layout_constraintStart_toStartOf="@id/ti_opp_adv_phone"
         app:layout_constraintTop_toBottomOf="@id/ti_opp_adv_phone">
 
-        <AutoCompleteTextView
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/case_fees"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/case_fees"
-            android:inputType="none"/>
+            android:inputType="numberDecimal"
+            android:hint="@string/case_fees" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

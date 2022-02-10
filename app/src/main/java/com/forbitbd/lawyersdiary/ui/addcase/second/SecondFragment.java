@@ -1,17 +1,17 @@
-package com.forbitbd.lawyersdiary.ui.addcase;
+package com.forbitbd.lawyersdiary.ui.addcase.second;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.forbitbd.lawyersdiary.R;
+import com.forbitbd.lawyersdiary.model.Case;
+import com.forbitbd.lawyersdiary.ui.addcase.Comm;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.stepstone.stepper.BlockingStep;
@@ -19,11 +19,12 @@ import com.stepstone.stepper.Step;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
-public class SecondFragment extends Fragment implements Step,BlockingStep {
+public class SecondFragment extends Fragment implements Step,BlockingStep, SecondFragmentContract.View {
 
-    private AutoCompleteTextView etCaseFees;
+    private SecondFragmentPresenter mPresenter;
     private TextInputLayout tiOppPartyName, tiOppAdvocateName, tiOppAdvocatePhone, tiCaseFees, tiRemarks;
-    private TextInputEditText etOppPartyName, etOppAdvocateName, etOppAdvocatePhone, etRemarks;
+    private TextInputEditText etOppPartyName, etOppAdvocateName, etOppAdvocatePhone,etCaseFees, etRemarks;
+    private Comm comm;
 
     public SecondFragment() {
         // Required empty public constructor
@@ -32,7 +33,8 @@ public class SecondFragment extends Fragment implements Step,BlockingStep {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        comm = (Comm) getActivity();
+        mPresenter = new SecondFragmentPresenter(this);
     }
 
     @Override
@@ -53,10 +55,8 @@ public class SecondFragment extends Fragment implements Step,BlockingStep {
         etCaseFees = view.findViewById(R.id.case_fees);
         etRemarks = view.findViewById(R.id.case_remarks);
 
-        String[] party = getResources().getStringArray(R.array.fees);
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), R.layout.support_simple_spinner_dropdown_item, party);
-        etCaseFees.setText(arrayAdapter.getItem(0).toString(), false);
-        etCaseFees.setAdapter(arrayAdapter);
+//        Case ca_se = new Case();
+//        ca_se.setComplainant_Defandant();
 
         return view;
     }
@@ -91,10 +91,63 @@ public class SecondFragment extends Fragment implements Step,BlockingStep {
         String caseFees = etCaseFees.getText().toString().trim();
         String remarks = etRemarks.getText().toString().trim();
 
+        Case aCase = comm.getCase();
+
+        aCase.setOpposition_party_name(oppPartyName);
+        aCase.setOpposition_lawyer_name(oppAdvocateName);
+        aCase.setOpposition_lawyer_phone(oppAdvocatePhone);
+
+        try {
+            aCase.setCase_fees(Double.parseDouble(caseFees));
+        }catch (Exception e){
+            aCase.setCase_fees(0);
+        }
+
+
+        aCase.setRemarks(remarks);
+
+        boolean valid = mPresenter.validate(aCase);
+
+        if(!valid){
+            return;
+        }
+
+        mPresenter.saveCaseToServer(aCase);
+
     }
 
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
         callback.goToPrevStep();
+    }
+
+    @Override
+    public void clearError() {
+        tiOppPartyName.setErrorEnabled(false);
+        tiOppAdvocateName.setErrorEnabled(false);
+        tiOppAdvocatePhone.setErrorEnabled(false);
+        tiCaseFees.setErrorEnabled(false);
+    }
+
+    @Override
+    public void finishActivity(Case aCase) {
+        comm.finishActivity(aCase);
+    }
+
+    @Override
+    public void setError(int fieldId, String message) {
+        if(fieldId==1){
+            tiOppPartyName.setError(message);
+            etOppPartyName.requestFocus();
+        }else if (fieldId ==2){
+            tiOppAdvocateName.setError(message);
+            etOppAdvocateName.requestFocus();
+        }else if (fieldId ==3){
+            tiOppAdvocatePhone.setError(message);
+            etOppAdvocatePhone.requestFocus();
+        }else if (fieldId ==4){
+            tiCaseFees.setError(message);
+            etCaseFees.requestFocus();
+        }
     }
 }

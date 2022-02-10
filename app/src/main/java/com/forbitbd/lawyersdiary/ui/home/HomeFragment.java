@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.forbitbd.lawyersdiary.R;
+import com.forbitbd.lawyersdiary.model.Case;
 import com.forbitbd.lawyersdiary.model.Client;
+import com.forbitbd.lawyersdiary.model.Court;
 import com.forbitbd.lawyersdiary.model.Features;
 import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
 import com.forbitbd.lawyersdiary.ui.addcasetype.AddCaseTypeFragment;
@@ -28,6 +30,7 @@ import com.forbitbd.lawyersdiary.ui.main.Communicator;
 import com.forbitbd.lawyersdiary.utils.AppPreference;
 import com.google.android.material.card.MaterialCardView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener, HomeContract.View {
@@ -96,6 +99,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         featuresList.add(new Features(R.drawable.appointment,"Appointment"));
         featuresList.add(new Features(R.drawable.evidence,"Evidence"));
         featuresList.add(new Features(R.drawable.calendar,"Calender"));
+        featuresList.add(new Features(R.drawable.add_case_type,"Add Case Date"));
 
         adapter = new FeatureAdapter(featuresList, new FeatureAdapter.FeatureClickListener() {
             @Override
@@ -118,6 +122,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
                     communicator.startEvidenceActivity();
                 }else if (adapterPosition == 8){
                     communicator.startCalenderActivity();
+                }else if (adapterPosition == 9){
+                    communicator.startAddCaseDateActivity();
                 }
             }
         });

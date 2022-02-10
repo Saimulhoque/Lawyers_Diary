@@ -8,6 +8,7 @@ public class Dashboard implements Serializable {
     private List<Court> courts;
     private List<Client> clients;
     private List<CaseType> caseTypes;
+    private List<Case> cases;
 
     public Dashboard() {
     }
@@ -35,4 +36,14 @@ public class Dashboard implements Serializable {
     public void setCaseTypes(List<CaseType> caseTypes) {
         this.caseTypes = caseTypes;
     }
+
+    public List<Case> getCases() {
+        return cases;
+    }
+
+    public void setCases(List<Case> cases) {
+        this.cases = cases;
+    }
+
+
 }

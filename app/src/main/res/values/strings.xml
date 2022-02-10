@@ -79,15 +79,14 @@
     <string name="add_evidence">Add Evidence</string>
     <string name="case_types">Case Types</string>
     <string name="update">Update</string>
+    <string name="ca_se">Case</string>
+    <string name="next_date">Next Date</string>
+    <string name="judge_name">Judge Name</string>
+    <string name="documents_req">Documents Required</string>
 
     <string-array name="party">
         <item>Complainant</item>
         <item>Defendant</item>
-    </string-array>
-
-    <string-array name="fees">
-        <item>Main</item>
-        <item>Additional</item>
     </string-array>
 
     <string-array name="city_names">

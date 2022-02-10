@@ -6,7 +6,6 @@ public interface AddCaseTypeContract {
 
     interface Presenter{
         boolean validate(CaseType caseType);
-
         void saveCaseType(CaseType caseType);
     }
 

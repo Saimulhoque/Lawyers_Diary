@@ -1,28 +1,38 @@
 package com.forbitbd.lawyersdiary.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Case {
+public class Case implements Serializable {
 
+    private String _id;
     private String case_title;
-    private String client_id;
+    private String client;
     private String case_type;
-    private String client_name;
     private String case_number;
     private String file_number;
-    private String court_name;
-    private String city;
+    private String court;
     private String complainant_Defandant;
-    private Date case_reg_date;
-    private Date oppositon_party_name;
-    private String oppositon_lawyer_name;
-    private String case_fees;
-    private Boolean case_status;
+    private String city;
     private String lawyer_id;
+    private Date case_reg_date;
+    private String opposition_party_name;
+    private String opposition_lawyer_name;
+    private String opposition_lawyer_phone;
+    private double case_fees;
     private String remarks;
+    private Boolean case_status;
 
     public Case() {
 
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getCase_title() {
@@ -33,12 +43,12 @@ public class Case {
         this.case_title = case_title;
     }
 
-    public String getClient_id() {
-        return client_id;
+    public String getClient() {
+        return client;
     }
 
-    public void setClient_id(String client_id) {
-        this.client_id = client_id;
+    public void setClient(String client) {
+        this.client = client;
     }
 
     public String getCase_type() {
@@ -47,14 +57,6 @@ public class Case {
 
     public void setCase_type(String case_type) {
         this.case_type = case_type;
-    }
-
-    public String getClient_name() {
-        return client_name;
-    }
-
-    public void setClient_name(String client_name) {
-        this.client_name = client_name;
     }
 
     public String getCase_number() {
@@ -73,20 +75,12 @@ public class Case {
         this.file_number = file_number;
     }
 
-    public String getCourt_name() {
-        return court_name;
+    public String getCourt() {
+        return court;
     }
 
-    public void setCourt_name(String court_name) {
-        this.court_name = court_name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+    public void setCourt(String court) {
+        this.court = court;
     }
 
     public String getComplainant_Defandant() {
@@ -97,44 +91,12 @@ public class Case {
         this.complainant_Defandant = complainant_Defandant;
     }
 
-    public Date getCase_reg_date() {
-        return case_reg_date;
+    public String getCity() {
+        return city;
     }
 
-    public void setCase_reg_date(Date case_reg_date) {
-        this.case_reg_date = case_reg_date;
-    }
-
-    public Date getOppositon_party_name() {
-        return oppositon_party_name;
-    }
-
-    public void setOppositon_party_name(Date oppositon_party_name) {
-        this.oppositon_party_name = oppositon_party_name;
-    }
-
-    public String getOppositon_lawyer_name() {
-        return oppositon_lawyer_name;
-    }
-
-    public void setOppositon_lawyer_name(String oppositon_lawyer_name) {
-        this.oppositon_lawyer_name = oppositon_lawyer_name;
-    }
-
-    public String getCase_fees() {
-        return case_fees;
-    }
-
-    public void setCase_fees(String case_fees) {
-        this.case_fees = case_fees;
-    }
-
-    public Boolean getCase_status() {
-        return case_status;
-    }
-
-    public void setCase_status(Boolean case_status) {
-        this.case_status = case_status;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getLawyer_id() {
@@ -145,11 +107,64 @@ public class Case {
         this.lawyer_id = lawyer_id;
     }
 
+    public Date getCase_reg_date() {
+        return case_reg_date;
+    }
+
+    public void setCase_reg_date(Date case_reg_date) {
+        this.case_reg_date = case_reg_date;
+    }
+
+    public String getOpposition_party_name() {
+        return opposition_party_name;
+    }
+
+    public void setOpposition_party_name(String opposition_party_name) {
+        this.opposition_party_name = opposition_party_name;
+    }
+
+    public String getOpposition_lawyer_name() {
+        return opposition_lawyer_name;
+    }
+
+    public void setOpposition_lawyer_name(String opposition_lawyer_name) {
+        this.opposition_lawyer_name = opposition_lawyer_name;
+    }
+
+    public String getOpposition_lawyer_phone() {
+        return opposition_lawyer_phone;
+    }
+
+    public void setOpposition_lawyer_phone(String opposition_lawyer_phone) {
+        this.opposition_lawyer_phone = opposition_lawyer_phone;
+    }
+
+    public double getCase_fees() {
+        return case_fees;
+    }
+
+    public void setCase_fees(double case_fees) {
+        this.case_fees = case_fees;
+    }
+
     public String getRemarks() {
         return remarks;
     }
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public Boolean getCase_status() {
+        return case_status;
+    }
+
+    public void setCase_status(Boolean case_status) {
+        this.case_status = case_status;
+    }
+
+    @Override
+    public String toString() {
+        return this.case_title;
     }
 }

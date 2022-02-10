@@ -1,14 +1,23 @@
 package com.forbitbd.lawyersdiary.ui.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 import com.forbitbd.lawyersdiary.R;
+import com.forbitbd.lawyersdiary.model.Case;
 import com.forbitbd.lawyersdiary.model.Dashboard;
+import com.forbitbd.lawyersdiary.ui.add_case_date.AddCaseDateActivity;
+import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
 import com.forbitbd.lawyersdiary.ui.addcasetype.AddCaseTypeFragment;
 import com.forbitbd.lawyersdiary.ui.addclient.AddClientFragment;
 import com.forbitbd.lawyersdiary.ui.addcourt.AddCourtFragment;
@@ -24,6 +33,9 @@ import com.forbitbd.lawyersdiary.ui.schedule.ScheduleFragment;
 import com.forbitbd.lawyersdiary.ui.settings.SettingsFragment;
 import com.forbitbd.lawyersdiary.utils.AppPreference;
 import com.forbitbd.lawyersdiary.utils.BaseActivity;
+import com.forbitbd.lawyersdiary.utils.Constant;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends BaseActivity implements MainContract.View, Communicator {
@@ -92,7 +104,19 @@ public class MainActivity extends BaseActivity implements MainContract.View, Com
     }
 
     public void startAddCaseActivity() {
-        startAddCaseActivity(dashboard);
+        Intent intent = new Intent(this, AddCaseActivity.class);
+        intent.putExtra(Constant.DASHBOARD,dashboard);
+
+        someActivityResultLauncher.launch(intent);
+//        startActivity(intent);
+    }
+
+    @Override
+    public void startAddCaseDateActivity() {
+        Intent intent = new Intent(this, AddCaseDateActivity.class);
+        intent.putExtra(Constant.DASHBOARD,dashboard);
+        startActivity(intent);
+
     }
 
     public void startAddCaseTypeDialog() {
@@ -132,4 +156,23 @@ public class MainActivity extends BaseActivity implements MainContract.View, Com
             }
         });
     }
+
+    ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        Case aCase = (Case) data.getSerializableExtra(Constant.CASE);
+                        dashboard.getCases().add(aCase);
+
+                        Log.d("HHHHH","OKKKKKKK");
+//                        GoogleSignInResult r = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+//                        mPresenter.startAutentication(r);
+                    }else{
+                        Log.d("HHHHH","NOt OKKKKKKK");
+                    }
+                }
+            });
 }

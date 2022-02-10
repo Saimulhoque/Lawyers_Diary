@@ -11,4 +11,5 @@ public interface Communicator {
     void startAddCaseTypeDialog();
     void startAddCourtDialog();
     void startAddCaseActivity();
+    void startAddCaseDateActivity();
 }

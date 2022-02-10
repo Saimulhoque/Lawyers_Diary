@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 
+import com.forbitbd.lawyersdiary.ui.addcase.first.FirstFragment;
+import com.forbitbd.lawyersdiary.ui.addcase.second.SecondFragment;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
 

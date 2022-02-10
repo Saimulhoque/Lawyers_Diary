@@ -37,6 +37,9 @@ public interface ApiClient {
 
     @GET("/case/{id}")
     Call<List<Case>> getAllCases(@Path("id") String id);
+
+    @POST("/case")
+    Call<Case> saveCase(@Body Case aCase);
 //
 //    @GET("/dashboard/{id}")
 //    Call <List<Dashboard>> getDashboard(@Path("id") String id);
