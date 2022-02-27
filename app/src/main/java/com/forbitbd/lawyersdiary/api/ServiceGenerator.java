@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    private static final String BASE_URL = "http://203.17.65.25:3000";
+    private static final String BASE_URL = "https://mongo2.sultantracker.com";
 //    private static final String BASE_URL = "https://forbit.tech";
 
     private static final OkHttpClient okHttpClient = new OkHttpClient.Builder()

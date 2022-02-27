@@ -43,48 +43,29 @@
             app:layout_constraintTop_toTopOf="@id/client_image" />
 
         <TextView
-            android:id="@+id/client_phone"
+            android:id="@+id/appointment_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="01881269553"
+            android:text="01/01/2022"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/client_name"
             app:layout_constraintTop_toBottomOf="@+id/client_name" />
 
         <TextView
-            android:id="@+id/client_address"
+            android:id="@+id/appointment_purpose"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="01/01/2022"
+            android:text="Purpose"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/client_phone"
-            app:layout_constraintTop_toBottomOf="@+id/client_phone" />
-
-        <TextView
-            android:id="@+id/client_email"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="saimulhoque8214@gmail.com"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/client_address"
-            app:layout_constraintTop_toBottomOf="@+id/client_address" />
+            app:layout_constraintStart_toStartOf="@id/appointment_date"
+            app:layout_constraintTop_toBottomOf="@+id/appointment_date" />
 
         <Space
             android:layout_width="0dp"
-            android:layout_height="@dimen/xsmall_padding"
-            app:layout_constraintEnd_toEndOf="@id/client_email"
-            app:layout_constraintStart_toStartOf="@id/client_email"
-            app:layout_constraintTop_toBottomOf="@id/client_email" />
-
-        <ImageView
-            android:id="@+id/ic_call"
-            android:layout_width="@dimen/call_icon"
-            android:layout_height="@dimen/call_icon"
-            android:src="@drawable/phone_call"
-            android:layout_marginRight="@dimen/default_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:layout_height="@dimen/small_padding"
+            app:layout_constraintEnd_toEndOf="@id/appointment_purpose"
+            app:layout_constraintStart_toStartOf="@id/appointment_purpose"
+            app:layout_constraintTop_toBottomOf="@id/appointment_purpose" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

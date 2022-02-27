@@ -37,5 +37,10 @@ public class HomePresenter implements HomeContract.Presenter {
 //        });
     }
 
+    @Override
+    public void updateUI() {
+        mView.updateUI();
+    }
+
 
 }

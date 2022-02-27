@@ -18,6 +18,7 @@ import com.forbitbd.lawyersdiary.model.Case;
 import com.forbitbd.lawyersdiary.model.Dashboard;
 import com.forbitbd.lawyersdiary.ui.add_case_date.AddCaseDateActivity;
 import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
+import com.forbitbd.lawyersdiary.ui.addcasefees.AddCaseFeesActivity;
 import com.forbitbd.lawyersdiary.ui.addcasetype.AddCaseTypeFragment;
 import com.forbitbd.lawyersdiary.ui.addclient.AddClientFragment;
 import com.forbitbd.lawyersdiary.ui.addcourt.AddCourtFragment;
@@ -27,6 +28,7 @@ import com.forbitbd.lawyersdiary.ui.cases.CasesActivity;
 import com.forbitbd.lawyersdiary.ui.clients.ClientsActivity;
 import com.forbitbd.lawyersdiary.ui.evidence.EvidenceActivity;
 import com.forbitbd.lawyersdiary.ui.home.HomeFragment;
+import com.forbitbd.lawyersdiary.ui.laws.LawActivity;
 import com.forbitbd.lawyersdiary.ui.login.LoginActivity;
 import com.forbitbd.lawyersdiary.ui.notification.NotificationFragment;
 import com.forbitbd.lawyersdiary.ui.schedule.ScheduleFragment;
@@ -40,7 +42,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends BaseActivity implements MainContract.View, Communicator {
 
-    private MainPresenter mPresenter;
     private Toolbar toolbar;
 
     private Dashboard dashboard;
@@ -50,7 +51,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Com
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPresenter = new MainPresenter(this);
+        MainPresenter mPresenter = new MainPresenter(this);
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
@@ -86,11 +87,16 @@ public class MainActivity extends BaseActivity implements MainContract.View, Com
     }
 
     public void startAppointmentActivity() {
-        startActivity(new Intent(MainActivity.this, AppointmentActivity.class));
+        Intent intent = new Intent(MainActivity.this,AppointmentActivity.class);
+        intent.putExtra(Constant.DASHBOARD,dashboard);
+        startActivity(intent);
     }
 
     public void startCasesActivity() {
-        startActivity(new Intent(MainActivity.this, CasesActivity.class));
+        Intent intent = new Intent(MainActivity.this,CasesActivity.class);
+        intent.putExtra(Constant.DASHBOARD,dashboard);
+        startActivity(intent);
+
     }
 
     public void startClientActivity() {
@@ -106,7 +112,6 @@ public class MainActivity extends BaseActivity implements MainContract.View, Com
     public void startAddCaseActivity() {
         Intent intent = new Intent(this, AddCaseActivity.class);
         intent.putExtra(Constant.DASHBOARD,dashboard);
-
         someActivityResultLauncher.launch(intent);
 //        startActivity(intent);
     }
@@ -117,6 +122,64 @@ public class MainActivity extends BaseActivity implements MainContract.View, Com
         intent.putExtra(Constant.DASHBOARD,dashboard);
         startActivity(intent);
 
+    }
+
+    @Override
+    public void startAddCaseFeesActivity() {
+        Intent intent = new Intent(this, AddCaseFeesActivity.class);
+        intent.putExtra(Constant.DASHBOARD,dashboard);
+        startActivity(intent);
+    }
+
+    @Override
+    public Dashboard getDashboard() {
+        return dashboard;
+    }
+
+    @Override
+    public int getTotalCases() {
+        return dashboard.getCases().size();
+    }
+
+    @Override
+    public int getActiveCases() {
+        int count = 0;
+
+        for(Case x: dashboard.getCases()){
+            if(x.getCase_status()){
+                count = count+1;
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int getClosedCases() {
+        int count = 0;
+
+        for(Case x: dashboard.getCases()){
+            if(!x.getCase_status()){
+                count = count+1;
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int getNumberOfClients() {
+        return dashboard.getClients().size();
+    }
+
+    @Override
+    public int getNumberOfCaseTypes() {
+        return dashboard.getCaseTypes().size();
+    }
+
+    @Override
+    public void startLawActivity() {
+        Intent intent = new Intent(this, LawActivity.class);
+        intent.putExtra(Constant.DASHBOARD,dashboard);
+        startActivity(intent);
     }
 
     public void startAddCaseTypeDialog() {

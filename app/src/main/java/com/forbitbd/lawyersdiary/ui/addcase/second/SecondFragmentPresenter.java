@@ -1,5 +1,7 @@
 package com.forbitbd.lawyersdiary.ui.addcase.second;
 
+import android.util.Log;
+
 import com.forbitbd.lawyersdiary.api.ApiClient;
 import com.forbitbd.lawyersdiary.api.ServiceGenerator;
 import com.forbitbd.lawyersdiary.model.Case;
@@ -40,6 +42,9 @@ public class SecondFragmentPresenter implements SecondFragmentContract.Presenter
     @Override
     public void saveCaseToServer(Case aCase) {
         ApiClient client = ServiceGenerator.createService(ApiClient.class);
+
+        Log.d("HHHHH",aCase.getOpposition_lawyer_name());
+        Log.d("HHHHH",aCase.getOpposition_party_name());
 
         client.saveCase(aCase)
                 .enqueue(new Callback<Case>() {

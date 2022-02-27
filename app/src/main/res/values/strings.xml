@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lawyers Diary</string>
+    <string name="app_name">Lawyer\'s Diary</string>
     <string name="let_s_start_with_login">Welcome! \nLet\'s start with Login!</string>
     <string name="let_s_start_with_register">Welcome! \nLet\'s start with Register!</string>
     <string name="please_login_with_your_email_amp_password"><![CDATA[Please Login With Your Email & Password]]></string>
@@ -83,10 +83,30 @@
     <string name="next_date">Next Date</string>
     <string name="judge_name">Judge Name</string>
     <string name="documents_req">Documents Required</string>
+    <string name="cases_type">Case Type:</string>
+    <string name="courts_name">Court Name:</string>
+    <string name="start_date">Starting Date:</string>
+    <string name="clients">Client:</string>
+    <string name="opp_party">Opp. Party:</string>
+    <string name="opp_lawyer">Opp. Lawyer:</string>
+    <string name="add_case_date">Add Case Date</string>
+    <string name="add_case_fees">Add Case Fees</string>
+    <string name="select_case">Select Case</string>
+    <string name="payment_date">Payment Date</string>
+    <string name="amount">Amount</string>
+    <string name="payment_type">Payment Type</string>
+    <string name="select_client">Select Client</string>
+    <string name="appointment_date">Appointment Date</string>
+    <string name="purpose">Purpose</string>
 
     <string-array name="party">
         <item>Complainant</item>
         <item>Defendant</item>
+    </string-array>
+
+    <string-array name="payment_type">
+        <item>Main</item>
+        <item>Additional</item>
     </string-array>
 
     <string-array name="city_names">
@@ -94,7 +114,7 @@
         <item>Cumilla</item>
         <item>Feni</item>
         <item>BBaria</item>
-        <item>Rnagamati</item>
+        <item>Rangamati</item>
         <item>Noakhali</item>
         <item>Chadpur</item>
         <item>Lokkhipur</item>

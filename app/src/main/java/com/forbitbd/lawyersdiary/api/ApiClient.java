@@ -1,6 +1,9 @@
 package com.forbitbd.lawyersdiary.api;
 
+import com.forbitbd.lawyersdiary.model.Appointment;
 import com.forbitbd.lawyersdiary.model.Case;
+import com.forbitbd.lawyersdiary.model.CaseDate;
+import com.forbitbd.lawyersdiary.model.CaseFees;
 import com.forbitbd.lawyersdiary.model.CaseType;
 import com.forbitbd.lawyersdiary.model.Client;
 import com.forbitbd.lawyersdiary.model.Court;
@@ -17,31 +20,37 @@ import retrofit2.http.Path;
 
 public interface ApiClient {
 
-    @POST("/lawyer")
+    @POST("/dairy/lawyer")
     Call<Lawyer> register(@Body Lawyer data);
 
-    @POST("/casetype")
+    @POST("/dairy/casetype")
     Call<CaseType> postCaseType(@Body CaseType caseType);
 
-    @POST("/client")
+    @POST("/dairy/client")
     Call<Client> postClient(@Body Client client);
 
-    @GET("/client/{id}")
+    @GET("/dairy/client/{id}")
     Call<List<Client>> getAllClients(@Path("id") String id);
 
-    @POST("/court")
+    @POST("/dairy/court")
     Call<Court> postCourt(@Body Court court);
 
-    @GET("/dashboard/{id}")
+    @GET("/dairy/dashboard/{id}")
     Call<Dashboard> getDashboard(@Path("id") String id);
 
-    @GET("/case/{id}")
+    @GET("/dairy/case/{id}")
     Call<List<Case>> getAllCases(@Path("id") String id);
 
-    @POST("/case")
+    @POST("/dairy/case")
     Call<Case> saveCase(@Body Case aCase);
-//
-//    @GET("/dashboard/{id}")
-//    Call <List<Dashboard>> getDashboard(@Path("id") String id);
+
+    @POST("/dairy/casedate")
+    Call<CaseDate> saveCaseDate(@Body CaseDate caseDate);
+
+    @POST("/dairy/appointment")
+    Call<Appointment> saveAppointment(@Body Appointment appointment);
+
+    @POST("/dairy/case_fees")
+    Call<CaseFees> saveCaseFees(@Body CaseFees caseFees);
 
 }

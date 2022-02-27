@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LawyersDiary">
         <activity
+            android:name=".ui.laws.LawActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.addcasefees.AddCaseFeesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.add_case_date.AddCaseDateActivity"
             android:exported="false" />
         <activity

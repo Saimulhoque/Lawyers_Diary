@@ -16,6 +16,7 @@ import com.forbitbd.lawyersdiary.R;
 import com.forbitbd.lawyersdiary.model.Case;
 import com.forbitbd.lawyersdiary.model.Client;
 import com.forbitbd.lawyersdiary.model.Court;
+import com.forbitbd.lawyersdiary.model.Dashboard;
 import com.forbitbd.lawyersdiary.model.Features;
 import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
 import com.forbitbd.lawyersdiary.ui.addcasetype.AddCaseTypeFragment;
@@ -61,10 +62,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         String lawyerId = AppPreference.getInstance(getContext()).getLawyer().get_id();
-
         initView(view);
         mPresenter.getDashboardInfo(lawyerId);
-
         return view;
     }
 
@@ -86,20 +85,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         cardActiveCases.setOnClickListener(this);
         cardCaseClosed.setOnClickListener(this);
 
+        mPresenter.updateUI();
+
         recyclerView = view.findViewById(R.id.recyclerview);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),3,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
         featuresList = new ArrayList<>();
+
         featuresList.add(new Features(R.drawable.client,"Add Client"));
         featuresList.add(new Features(R.drawable.add_case,"Add Case"));
         featuresList.add(new Features(R.drawable.court,"Add Court"));
         featuresList.add(new Features(R.drawable.add_case_type,"Add Case Type"));
+        featuresList.add(new Features(R.drawable.add_case_date,"Add Case Date"));
+        featuresList.add(new Features(R.drawable.fees,"Add Case Fees"));
         featuresList.add(new Features(R.drawable.clients,"Clients"));
         featuresList.add(new Features(R.drawable.cases,"Cases"));
         featuresList.add(new Features(R.drawable.appointment,"Appointment"));
         featuresList.add(new Features(R.drawable.evidence,"Evidence"));
         featuresList.add(new Features(R.drawable.calendar,"Calender"));
-        featuresList.add(new Features(R.drawable.add_case_type,"Add Case Date"));
+        featuresList.add(new Features(R.drawable.laws,"Law's"));
 
         adapter = new FeatureAdapter(featuresList, new FeatureAdapter.FeatureClickListener() {
             @Override
@@ -113,17 +117,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
                 }else if (adapterPosition == 3){
                     communicator.startAddCaseTypeDialog();
                 }else if (adapterPosition == 4){
-                    communicator.startClientActivity();
-                }else if (adapterPosition == 5){
-                    communicator.startCasesActivity();
-                }else if (adapterPosition == 6){
-                    communicator.startAppointmentActivity();
-                }else if (adapterPosition == 7){
-                    communicator.startEvidenceActivity();
-                }else if (adapterPosition == 8){
-                    communicator.startCalenderActivity();
-                }else if (adapterPosition == 9){
                     communicator.startAddCaseDateActivity();
+                }else if (adapterPosition == 5){
+                    communicator.startAddCaseFeesActivity();
+                }else if (adapterPosition == 6){
+                    communicator.startClientActivity();
+                }else if (adapterPosition == 7){
+                    communicator.startCasesActivity();
+                }else if (adapterPosition == 8){
+                    communicator.startAppointmentActivity();
+                }else if (adapterPosition == 9){
+                    communicator.startEvidenceActivity();
+                }else if (adapterPosition == 10){
+                    communicator.startCalenderActivity();
+                }else if (adapterPosition == 11){
+                    communicator.startLawActivity();
                 }
             }
         });
@@ -147,5 +155,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     @Override
     public void addDashboard(String dashboard) {
 
+    }
+
+    @Override
+    public void updateUI() {
+        tvCaseAdded.setText(communicator.getTotalCases()+"");
+        tvActiveCases.setText(communicator.getActiveCases()+"");
+        tvCaseClosed.setText(communicator.getClosedCases()+"");
+        tvTotalClients.setText(communicator.getNumberOfClients()+"");
+        tvCaseTypes.setText(communicator.getNumberOfCaseTypes()+"");
     }
 }

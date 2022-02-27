@@ -12,7 +12,7 @@ public class Case implements Serializable {
     private String case_number;
     private String file_number;
     private String court;
-    private String complainant_Defandant;
+    private String complainant_Defendant;
     private String city;
     private String lawyer_id;
     private Date case_reg_date;
@@ -21,7 +21,7 @@ public class Case implements Serializable {
     private String opposition_lawyer_phone;
     private double case_fees;
     private String remarks;
-    private Boolean case_status;
+    private boolean case_status;
 
     public Case() {
 
@@ -83,12 +83,12 @@ public class Case implements Serializable {
         this.court = court;
     }
 
-    public String getComplainant_Defandant() {
-        return complainant_Defandant;
+    public String getComplainant_Defendant() {
+        return complainant_Defendant;
     }
 
-    public void setComplainant_Defandant(String complainant_Defandant) {
-        this.complainant_Defandant = complainant_Defandant;
+    public void setComplainant_Defendant(String complainant_Defendant) {
+        this.complainant_Defendant = complainant_Defendant;
     }
 
     public String getCity() {

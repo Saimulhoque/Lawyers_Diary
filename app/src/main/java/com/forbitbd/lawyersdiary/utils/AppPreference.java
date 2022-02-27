@@ -31,8 +31,6 @@ public class AppPreference {
         return appPreference;
     }
 
-
-
     public void setLawyer(Lawyer lawyer){
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(ID,lawyer.get_id());

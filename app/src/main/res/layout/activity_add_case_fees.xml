@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_lite"
-    tools:context=".ui.add_case_date.AddCaseDateActivity">
+    tools:context=".ui.addcasefees.AddCaseFeesActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/add_case_date"
+        app:title="@string/add_case_fees"
         android:background="@color/white"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -29,68 +29,68 @@
         <AutoCompleteTextView
             android:id="@+id/et_case"
             style="@style/autocomplete_textview_style"
-            android:hint="@string/ca_se" />
+            android:hint="@string/select_case" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_next_date"
+        android:id="@+id/ti_payment_date"
         style="@style/textinput_layout_style"
         app:layout_constraintEnd_toEndOf="@id/ti_case"
         app:layout_constraintStart_toStartOf="@id/ti_case"
         app:layout_constraintTop_toBottomOf="@id/ti_case">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_next_date"
+            android:id="@+id/et_payment_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="date"
             android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
-            android:hint="@string/next_date" />
+            android:hint="@string/payment_date" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_judge_name"
+        android:id="@+id/ti_amount"
         style="@style/textinput_layout_style"
         app:layout_constraintEnd_toEndOf="@+id/ti_case"
         app:layout_constraintStart_toStartOf="@+id/ti_case"
-        app:layout_constraintTop_toBottomOf="@+id/ti_next_date">
+        app:layout_constraintTop_toBottomOf="@+id/ti_payment_date">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_judge_name"
+            android:id="@+id/et_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/judge_name" />
+            android:hint="@string/amount" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_court"
+        android:id="@+id/ti_payment_type"
         style="@style/dropdown_textinput_layout_style"
-        app:layout_constraintEnd_toEndOf="@+id/ti_judge_name"
-        app:layout_constraintStart_toStartOf="@+id/ti_judge_name"
-        app:layout_constraintTop_toBottomOf="@+id/ti_judge_name">
+        app:layout_constraintEnd_toEndOf="@+id/ti_amount"
+        app:layout_constraintStart_toStartOf="@+id/ti_amount"
+        app:layout_constraintTop_toBottomOf="@+id/ti_amount">
 
         <AutoCompleteTextView
-            android:id="@+id/et_court"
+            android:id="@+id/et_payment_type"
             style="@style/autocomplete_textview_style"
-            android:hint="@string/court_name" />
+            android:hint="@string/payment_type" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_document_requires"
+        android:id="@+id/ti_remarks"
         style="@style/textinput_layout_style"
-        app:layout_constraintEnd_toEndOf="@+id/ti_court"
-        app:layout_constraintStart_toStartOf="@+id/ti_court"
-        app:layout_constraintTop_toBottomOf="@+id/ti_court">
+        app:layout_constraintEnd_toEndOf="@+id/ti_payment_type"
+        app:layout_constraintStart_toStartOf="@+id/ti_payment_type"
+        app:layout_constraintTop_toBottomOf="@+id/ti_payment_type">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_document_requires"
+            android:id="@+id/et_remarks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/documents_req" />
+            android:hint="@string/remarks" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,8 +100,8 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:layout_marginTop="@dimen/xlarge_padding"
-        app:layout_constraintStart_toStartOf="@id/ti_document_requires"
-        app:layout_constraintEnd_toEndOf="@id/ti_document_requires"
-        app:layout_constraintTop_toBottomOf="@id/ti_document_requires"/>
+        app:layout_constraintStart_toStartOf="@id/ti_remarks"
+        app:layout_constraintEnd_toEndOf="@id/ti_remarks"
+        app:layout_constraintTop_toBottomOf="@id/ti_remarks"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

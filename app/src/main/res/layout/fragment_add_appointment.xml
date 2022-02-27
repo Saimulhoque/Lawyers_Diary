@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.addappointment.AddAppointmentFragment">
+
+    <View
+        android:id="@+id/top_view"
+        style="@style/dialog_top_view_style"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/title_view"
+        style="@style/dialog_title_style"
+        app:layout_constraintStart_toStartOf="@id/top_view"
+        app:layout_constraintTop_toTopOf="@id/top_view"
+        app:layout_constraintBottom_toBottomOf="@id/top_view"
+        android:text="@string/add_appointment" />
+
+    <ImageView
+        android:id="@+id/ic_close"
+        style="@style/close_icon_style"
+        app:layout_constraintTop_toTopOf="@id/top_view"
+        app:layout_constraintBottom_toBottomOf="@id/top_view"
+        app:layout_constraintEnd_toEndOf="@id/top_view" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_client"
+        style="@style/dropdown_textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/medium_padding"
+        app:layout_constraintTop_toBottomOf="@id/top_view">
+
+        <AutoCompleteTextView
+            android:id="@+id/et_client"
+            style="@style/autocomplete_textview_style"
+            android:hint="@string/select_client" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_appointment_date"
+        style="@style/textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ic_close"
+        app:layout_constraintStart_toStartOf="@id/ti_client"
+        app:layout_constraintTop_toBottomOf="@id/ti_client">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_appointment_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/appointment_date"
+            android:drawableEnd="@drawable/ic_baseline_calendar_today_24"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_appointment_purpose"
+        style="@style/textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ic_close"
+        app:layout_constraintStart_toStartOf="@id/ti_appointment_date"
+        app:layout_constraintTop_toBottomOf="@id/ti_appointment_date">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_appointment_purpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/purpose" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ti_remarks"
+        style="@style/textinput_layout_style"
+        app:layout_constraintEnd_toEndOf="@id/ic_close"
+        app:layout_constraintStart_toStartOf="@id/ti_appointment_purpose"
+        app:layout_constraintTop_toBottomOf="@id/ti_appointment_purpose">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_remarks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/remarks" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        style="@style/button_style"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="@id/ti_remarks"
+        app:layout_constraintStart_toStartOf="@id/ti_remarks"
+        app:layout_constraintTop_toBottomOf="@id/ti_remarks" />
+
+    <Space
+        style="@style/space_style"
+        app:layout_constraintStart_toStartOf="@id/btn_save"
+        app:layout_constraintEnd_toEndOf="@id/btn_save"
+        app:layout_constraintTop_toBottomOf="@id/btn_save" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

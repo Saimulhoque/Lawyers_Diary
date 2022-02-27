@@ -26,19 +26,21 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class AddCaseDateActivity extends BaseActivity {
+public class AddCaseDateActivity extends BaseActivity implements AddCaseDateContract.View{
 
     private TextInputLayout tiCase, tiNextDate, tiJudgeName, tiCourt, tiDocuments;
     private AutoCompleteTextView etCase, etCourt;
     private TextInputEditText etNextDate, etJudgeName, etDocuments;
     private Button btnSave;
     private Dashboard dashboard;
+    private AddCaseDatePresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_case_date);
-
+        setupToolbar(R.id.toolbar);
+        mPresenter = new AddCaseDatePresenter(this);
         dashboard = (Dashboard) getIntent().getSerializableExtra(Constant.DASHBOARD);
 
         tiCase = findViewById(R.id.ti_case);
@@ -49,13 +51,11 @@ public class AddCaseDateActivity extends BaseActivity {
 
         etCase = findViewById(R.id.et_case);
         etCourt = findViewById(R.id.et_court);
-
         etNextDate = findViewById(R.id.et_next_date);
         etJudgeName = findViewById(R.id.et_judge_name);
         etDocuments = findViewById(R.id.et_document_requires);
 
         etNextDate.setText(MyUtil.dateToStr(new Date()));
-
 
         etCase.setAdapter(new ArrayAdapter<Case>(this, android.R.layout.simple_expandable_list_item_1,dashboard.getCases()));
         etCourt.setAdapter(new ArrayAdapter<Court>(this, android.R.layout.simple_expandable_list_item_1,dashboard.getCourts()));
@@ -105,6 +105,14 @@ public class AddCaseDateActivity extends BaseActivity {
                     caseDate.setNext_date(null);
                     e.printStackTrace();
                 }
+
+                boolean valid = mPresenter.validate(caseDate);
+
+                if(!valid){
+                    return;
+                }
+
+                mPresenter.saveCaseDate(caseDate);
             }
         });
     }
@@ -125,5 +133,31 @@ public class AddCaseDateActivity extends BaseActivity {
             }
         }
         return null;
+    }
+
+    @Override
+    public void clearError() {
+        tiCase.setErrorEnabled(false);
+        tiNextDate.setErrorEnabled(false);
+        tiCourt.setErrorEnabled(false);
+    }
+
+    @Override
+    public void setError(int fieldId, String message) {
+        if(fieldId==1){
+            tiCase.setError(message);
+            etCase.requestFocus();
+        }else if (fieldId ==2){
+            tiNextDate.setError(message);
+            etNextDate.requestFocus();
+        }else if (fieldId ==3){
+            tiCourt.setError(message);
+            etCourt.requestFocus();
+        }
+    }
+
+    @Override
+    public void addCaseDate(CaseDate caseDate) {
+        finish();
     }
 }

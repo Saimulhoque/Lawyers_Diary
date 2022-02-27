@@ -55,9 +55,6 @@ public class SecondFragment extends Fragment implements Step,BlockingStep, Secon
         etCaseFees = view.findViewById(R.id.case_fees);
         etRemarks = view.findViewById(R.id.case_remarks);
 
-//        Case ca_se = new Case();
-//        ca_se.setComplainant_Defandant();
-
         return view;
     }
 
@@ -102,7 +99,6 @@ public class SecondFragment extends Fragment implements Step,BlockingStep, Secon
         }catch (Exception e){
             aCase.setCase_fees(0);
         }
-
 
         aCase.setRemarks(remarks);
 

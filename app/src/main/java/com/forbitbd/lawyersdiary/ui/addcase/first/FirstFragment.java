@@ -96,7 +96,6 @@ public class FirstFragment extends Fragment implements Step, BlockingStep, First
         etCourtCity.setAdapter(arrayAdapter2);
 
         etCaseRegDate.setText(MyUtil.dateToStr(new Date()));
-
         Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         calendar.clear();
         long today = MaterialDatePicker.todayInUtcMilliseconds();
@@ -112,6 +111,7 @@ public class FirstFragment extends Fragment implements Step, BlockingStep, First
                 materialDatePicker.show(getChildFragmentManager(),"JJJJJJJ");
             }
         });
+
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
@@ -150,6 +150,7 @@ public class FirstFragment extends Fragment implements Step, BlockingStep, First
         String caseCourtName = etCourtName.getText().toString().trim();
         String courtCityName = etCourtCity.getText().toString().trim();
         String clientName = etClientName.getText().toString().trim();
+        String partyName = etParty.getText().toString().trim();
 
         Case ca_se = new Case();
         ca_se.setCase_title(caseTitle);
@@ -158,6 +159,8 @@ public class FirstFragment extends Fragment implements Step, BlockingStep, First
         ca_se.setCase_type(comm.getCaseTypeObjectId(caseType));
         ca_se.setCourt(comm.getCourtObjectId(caseCourtName));
         ca_se.setClient(comm.getClientObjectId(clientName));
+        ca_se.setComplainant_Defendant(partyName);
+
 
         try {
             ca_se.setCase_reg_date(MyUtil.strToDate(caseRegDate));
@@ -168,7 +171,6 @@ public class FirstFragment extends Fragment implements Step, BlockingStep, First
 
         ca_se.setCity(courtCityName);
 
-
         boolean valid =mPresenter.validate(ca_se);
 
         if(!valid){
@@ -177,10 +179,7 @@ public class FirstFragment extends Fragment implements Step, BlockingStep, First
 
         mPresenter.saveCase(ca_se);
         callback.goToNextStep();
-
-
     }
-
 
     @Override
     public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
