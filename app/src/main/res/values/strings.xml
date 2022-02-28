@@ -98,6 +98,7 @@
     <string name="select_client">Select Client</string>
     <string name="appointment_date">Appointment Date</string>
     <string name="purpose">Purpose</string>
+    <string name="contact">Contact</string>
 
     <string-array name="party">
         <item>Complainant</item>

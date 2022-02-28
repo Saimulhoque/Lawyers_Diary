@@ -59,4 +59,11 @@
         <item name="android:layout_marginTop">@dimen/xlarge_padding</item>
         <item name="civ_border_color">@color/black</item>
     </style>
+
+    <style name="toolbar_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">@dimen/small_padding</item>
+    </style>
 </resources>

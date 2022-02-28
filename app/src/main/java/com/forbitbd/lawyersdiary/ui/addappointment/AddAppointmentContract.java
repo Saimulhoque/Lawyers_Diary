@@ -1,17 +1,21 @@
 package com.forbitbd.lawyersdiary.ui.addappointment;
 
-import com.forbitbd.lawyersdiary.model.Appointment;
+import com.forbitbd.lawyersdiary.model.AppointmentRequest;
+import com.forbitbd.lawyersdiary.model.AppointmentResponse;
+import com.forbitbd.lawyersdiary.model.OthersAppointmentRequest;
 
 public interface AddAppointmentContract {
 
     interface Presenter{
-        boolean validate(Appointment appointment);
-        void saveAppointment(Appointment appointment);
+        boolean validate(AppointmentRequest appointmentRequest);
+        boolean validateOthersAppointment(OthersAppointmentRequest appointmentRequest);
+        void saveAppointment(AppointmentRequest appointmentRequest);
+        void saveOthersAppointment(OthersAppointmentRequest appointmentRequest);
     }
 
     interface View{
         void clearError();
         void setError(int fieldId, String message);
-        void addAppointment(Appointment appointment);
+        void closeDialog(AppointmentResponse appointmentResponse);
     }
 }

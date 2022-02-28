@@ -44,7 +44,7 @@
             android:id="@+id/et_next_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date"
+            android:focusableInTouchMode="false"
             android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
             android:hint="@string/next_date" />
 

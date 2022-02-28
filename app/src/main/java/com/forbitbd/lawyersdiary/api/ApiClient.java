@@ -1,6 +1,7 @@
 package com.forbitbd.lawyersdiary.api;
 
-import com.forbitbd.lawyersdiary.model.Appointment;
+import com.forbitbd.lawyersdiary.model.AppointmentRequest;
+import com.forbitbd.lawyersdiary.model.AppointmentResponse;
 import com.forbitbd.lawyersdiary.model.Case;
 import com.forbitbd.lawyersdiary.model.CaseDate;
 import com.forbitbd.lawyersdiary.model.CaseFees;
@@ -9,6 +10,7 @@ import com.forbitbd.lawyersdiary.model.Client;
 import com.forbitbd.lawyersdiary.model.Court;
 import com.forbitbd.lawyersdiary.model.Dashboard;
 import com.forbitbd.lawyersdiary.model.Lawyer;
+import com.forbitbd.lawyersdiary.model.OthersAppointmentRequest;
 
 import java.util.List;
 
@@ -47,8 +49,16 @@ public interface ApiClient {
     @POST("/dairy/casedate")
     Call<CaseDate> saveCaseDate(@Body CaseDate caseDate);
 
+    @POST("/dairy/appointment/others")
+    Call<AppointmentResponse> saveOthersAppointment(@Body OthersAppointmentRequest appointmentRequest);
+
     @POST("/dairy/appointment")
-    Call<Appointment> saveAppointment(@Body Appointment appointment);
+    Call<AppointmentResponse> saveAppointment(@Body AppointmentRequest appointmentRequest);
+
+
+
+    @GET("/dairy/appointment/{id}")
+    Call<List<AppointmentResponse>> getAllAppointment(@Path("id") String id);
 
     @POST("/dairy/case_fees")
     Call<CaseFees> saveCaseFees(@Body CaseFees caseFees);

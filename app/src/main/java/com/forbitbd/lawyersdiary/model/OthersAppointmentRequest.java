@@ -1,18 +1,18 @@
 package com.forbitbd.lawyersdiary.model;
 
-import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
-public class Appointment implements Serializable {
+public class OthersAppointmentRequest {
 
     private String _id;
-    private String client;
+    private String name;
+    private String contact;
     private String purpose;
     private String remarks;
     private String lawyer_id;
     private Date appointment_date;
 
-    public Appointment() {
+    public OthersAppointmentRequest() {
     }
 
     public String get_id() {
@@ -23,12 +23,20 @@ public class Appointment implements Serializable {
         this._id = _id;
     }
 
-    public String getClient() {
-        return client;
+    public String getName() {
+        return name;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getPurpose() {
