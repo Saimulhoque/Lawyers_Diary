@@ -99,12 +99,14 @@ public class AppointmentActivity extends BaseActivity implements AppointmentCont
                 startActivity(intent);
             }
         });
+
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
+
         AlertDialog alert11 = builder.create();
         alert11.show();
     }
