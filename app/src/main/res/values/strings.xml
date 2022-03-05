@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Lawyer\'s Diary</string>
+<!--    <string name="app_id">ca-app-pub-5474497946967422~2393543405</string>-->
+    <!--    Test Ad Unit-->
+    <string name="banner_ad_unit">ca-app-pub-3940256099942544/6300978111</string>
+
     <string name="let_s_start_with_login">Welcome! \nLet\'s start with Login!</string>
     <string name="let_s_start_with_register">Welcome! \nLet\'s start with Register!</string>
     <string name="please_login_with_your_email_amp_password"><![CDATA[Please Login With Your Email & Password]]></string>
@@ -99,6 +103,7 @@
     <string name="appointment_date">Appointment Date</string>
     <string name="purpose">Purpose</string>
     <string name="contact">Contact</string>
+    <string name="in_overall_co_operation">In Overall Co-Operation</string>
 
     <string-array name="party">
         <item>Complainant</item>
@@ -111,17 +116,71 @@
     </string-array>
 
     <string-array name="city_names">
-        <item>Chattagram</item>
+        <item>Bagerhat</item>
+        <item>Bandarban</item>
+        <item>Barguna</item>
+        <item>Barishal</item>
+        <item>Bhola</item>
+        <item>Bogura</item>
+        <item>Brahmanbaria</item>
+        <item>Chandpur</item>
+        <item>Chapainawabganj</item>
+        <item>Chattogram</item>
+        <item>Chuadanga</item>
+        <item>Cox’s Bazar</item>
         <item>Cumilla</item>
+        <item>Dhaka</item>
+        <item>Dinajpur</item>
+        <item>Faridpur</item>
         <item>Feni</item>
-        <item>BBaria</item>
-        <item>Rangamati</item>
+        <item>Gaibandha</item>
+        <item>Gazipur</item>
+        <item>Gopalganj</item>
+        <item>Habiganj</item>
+        <item>Jamalpur</item>
+        <item>Jashore</item>
+        <item>Jhalokati</item>
+        <item>Jhenaidah</item>
+        <item>Joypurhat</item>
+        <item>Khagrachhari</item>
+        <item>Khulna</item>
+        <item>Kishoreganj</item>
+        <item>Kurigram</item>
+        <item>Kushtia</item>
+        <item>Lakshmipur</item>
+        <item>Lalmonirhat</item>
+        <item>Madaripur</item>
+        <item>Magura</item>
+        <item>Manikganj</item>
+        <item>Meherpur</item>
+        <item>Moulvibazar</item>
+        <item>Munshiganj</item>
+        <item>Mymensingh</item>
+        <item>Naogaon</item>
+        <item>Narail</item>
+        <item>Narayanganj</item>
+        <item>Narsingdi</item>
+        <item>Natore</item>
+        <item>Netrokona</item>
+        <item>Nilphamari</item>
         <item>Noakhali</item>
-        <item>Chadpur</item>
-        <item>Lokkhipur</item>
-        <item>Coxs Bazar</item>
-        <item>Khagrachori</item>
-        <item>Bandorban</item>
+        <item>Pabna</item>
+        <item>Panchagarh</item>
+        <item>Patuakhali</item>
+        <item>Pirojpur</item>
+        <item>Rajbari</item>
+        <item>Rajshahi</item>
+        <item>Rangamati</item>
+        <item>Rangpur</item>
+        <item>Satkhira</item>
+        <item>Shariatpur</item>
+        <item>Sherpur</item>
+        <item>Sirajganj</item>
+        <item>Sunamganj</item>
+        <item>Sylhet</item>
+        <item>Tangail</item>
+        <item>Thakurgaon</item>
+
     </string-array>
 
 </resources>

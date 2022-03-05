@@ -1,6 +1,8 @@
 package com.forbitbd.lawyersdiary.model;
 
-public class Lawyer {
+import java.io.Serializable;
+
+public class Lawyer implements Serializable {
 
     private String _id;
     private String name;
@@ -11,6 +13,7 @@ public class Lawyer {
     private String create_date;
 
     public Lawyer() {
+
     }
 
     public String get_id() {

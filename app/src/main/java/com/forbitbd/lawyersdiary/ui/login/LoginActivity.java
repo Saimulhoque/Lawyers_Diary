@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -62,6 +63,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                         Intent data = result.getData();
                         GoogleSignInResult r = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
                         mPresenter.startAutentication(r);
+                    }else{
+
                     }
                 }
             });
@@ -102,7 +105,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.btn_login){
-            loginUser();
+//            loginUser();
         }else if(id == R.id.btn_google){
             googleSignIn();
         }else if(id == R.id.reset_password){

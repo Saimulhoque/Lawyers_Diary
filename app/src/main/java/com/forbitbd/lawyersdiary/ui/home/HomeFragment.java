@@ -2,7 +2,6 @@ package com.forbitbd.lawyersdiary.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,25 +12,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.forbitbd.lawyersdiary.R;
-import com.forbitbd.lawyersdiary.model.Case;
-import com.forbitbd.lawyersdiary.model.Client;
-import com.forbitbd.lawyersdiary.model.Court;
-import com.forbitbd.lawyersdiary.model.Dashboard;
 import com.forbitbd.lawyersdiary.model.Features;
-import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
-import com.forbitbd.lawyersdiary.ui.addcasetype.AddCaseTypeFragment;
-import com.forbitbd.lawyersdiary.ui.addclient.AddClientFragment;
-import com.forbitbd.lawyersdiary.ui.addcourt.AddCourtFragment;
-import com.forbitbd.lawyersdiary.ui.appointment.AppointmentActivity;
-import com.forbitbd.lawyersdiary.ui.calender.CalenderActivity;
 import com.forbitbd.lawyersdiary.ui.cases.CasesActivity;
-import com.forbitbd.lawyersdiary.ui.clients.ClientsActivity;
-import com.forbitbd.lawyersdiary.ui.evidence.EvidenceActivity;
 import com.forbitbd.lawyersdiary.ui.main.Communicator;
 import com.forbitbd.lawyersdiary.utils.AppPreference;
 import com.google.android.material.card.MaterialCardView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment implements View.OnClickListener, HomeContract.View {
@@ -63,7 +49,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
         String lawyerId = AppPreference.getInstance(getContext()).getLawyer().get_id();
         initView(view);
-        mPresenter.getDashboardInfo(lawyerId);
         return view;
     }
 
@@ -152,10 +137,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         }
     }
 
-    @Override
-    public void addDashboard(String dashboard) {
-
-    }
 
     @Override
     public void updateUI() {
@@ -165,4 +146,5 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         tvTotalClients.setText(communicator.getNumberOfClients()+"");
         tvCaseTypes.setText(communicator.getNumberOfCaseTypes()+"");
     }
+
 }

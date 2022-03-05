@@ -59,12 +59,12 @@ public class ClientsActivity extends BaseActivity implements ClientsContract.Vie
         adapter = new ClientsAdapter(clientList, new ClientsAdapter.ClientsClickListener() {
             @Override
             public void OnItemClick(Client client) {
-                ClientDialogFragment clientDialogFragment = new ClientDialogFragment();
-                Bundle data = new Bundle();
-                data.putSerializable(Constant.CLIENT,client);
-                clientDialogFragment.setArguments(data);
-                clientDialogFragment.setCancelable(true);
-                clientDialogFragment.show(getSupportFragmentManager(),"JJJJJJJ");
+//                ClientDialogFragment clientDialogFragment = new ClientDialogFragment();
+//                Bundle data = new Bundle();
+//                data.putSerializable(Constant.CLIENT,client);
+//                clientDialogFragment.setArguments(data);
+//                clientDialogFragment.setCancelable(true);
+//                clientDialogFragment.show(getSupportFragmentManager(),"JJJJJJJ");
             }
 
             @Override

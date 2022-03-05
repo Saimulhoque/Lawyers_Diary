@@ -20,7 +20,6 @@ public class ClientsPresenter implements ClientsContract.Presenter{
         this.mView = mView;
     }
 
-
     @Override
     public void getClients(String lawyerId) {
         ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);

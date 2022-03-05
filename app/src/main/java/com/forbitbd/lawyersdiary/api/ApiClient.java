@@ -16,8 +16,10 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiClient {
@@ -55,12 +57,16 @@ public interface ApiClient {
     @POST("/dairy/appointment")
     Call<AppointmentResponse> saveAppointment(@Body AppointmentRequest appointmentRequest);
 
-
-
     @GET("/dairy/appointment/{id}")
     Call<List<AppointmentResponse>> getAllAppointment(@Path("id") String id);
 
     @POST("/dairy/case_fees")
     Call<CaseFees> saveCaseFees(@Body CaseFees caseFees);
+
+    //    @PUT("/dairy/lawyer/{id}")
+//    Call<Lawyer> updateLawyer(@Body Lawyer lawyer);
+
+//    @DELETE("/dairy/case/{id}")
+//    Call<Case> deleteCase(@Body Case aCase);
 
 }

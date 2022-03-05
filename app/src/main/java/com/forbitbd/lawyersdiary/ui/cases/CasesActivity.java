@@ -1,25 +1,16 @@
 package com.forbitbd.lawyersdiary.ui.cases;
 
-import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.forbitbd.lawyersdiary.R;
 import com.forbitbd.lawyersdiary.model.Case;
 import com.forbitbd.lawyersdiary.model.CaseType;
@@ -100,6 +91,7 @@ public class CasesActivity extends BaseActivity implements CasesContract.View, C
 
             }
         });
+
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -122,12 +114,14 @@ public class CasesActivity extends BaseActivity implements CasesContract.View, C
 
             }
         });
+
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
+
         AlertDialog alert11 = builder.create();
         alert11.show();
     }

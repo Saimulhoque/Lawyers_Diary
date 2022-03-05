@@ -1,5 +1,7 @@
 package com.forbitbd.lawyersdiary.ui.login;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.forbitbd.lawyersdiary.api.ApiClient;
@@ -36,6 +38,8 @@ public class LoginPresenter implements LoginContract.Presenter{
         if (result.isSuccess()) {
             GoogleSignInAccount account = result.getSignInAccount();
             firebaseAuthWithGoogle(account);
+        }else {
+            Log.d("HHHHHH","Result not Success");
         }
     }
 
@@ -64,15 +68,14 @@ public class LoginPresenter implements LoginContract.Presenter{
 
     private void registerToDatabase(FirebaseUser user) {
         Lawyer lawyer = new Lawyer();
-        if (user.getEmail() != null ){
-            lawyer.setEmail(user.getEmail());
-        }else if (user.getDisplayName() != null ){
-            lawyer.setName(user.getDisplayName());
-        }else if (user.getPhoneNumber() != null ){
+        if (user.getPhoneNumber() != null ){
             lawyer.setMobile(user.getPhoneNumber());
         }else if (user.getPhotoUrl() != null ){
             lawyer.setImage(user.getPhotoUrl().toString());
         }
+
+        lawyer.setName(user.getDisplayName());
+        lawyer.setEmail(user.getEmail());
 
         ApiClient apiClient = ServiceGenerator.createService(ApiClient.class);
         Call<Lawyer> call = apiClient.register(lawyer);

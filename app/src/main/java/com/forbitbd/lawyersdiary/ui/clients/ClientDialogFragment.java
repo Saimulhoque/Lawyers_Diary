@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.forbitbd.lawyersdiary.R;
-import com.forbitbd.lawyersdiary.ui.addclient.AddClientPresenter;
+import com.forbitbd.lawyersdiary.ui.home.addclient.AddClientPresenter;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 

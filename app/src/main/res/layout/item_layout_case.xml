@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/medium_padding"
             android:layout_marginTop="@dimen/small_padding"
-            android:text="Criminal"
+            android:text=""
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/tv_case_type"
             app:layout_constraintTop_toBottomOf="@+id/case_title" />
@@ -114,7 +114,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/medium_padding"
-            android:text="Saimul Hoque"
+            android:text=""
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@id/case_complainant_or_defendant"
             app:layout_constraintTop_toBottomOf="@+id/starting_date" />

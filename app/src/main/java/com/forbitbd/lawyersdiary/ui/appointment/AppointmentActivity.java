@@ -56,9 +56,9 @@ public class AppointmentActivity extends BaseActivity implements AppointmentCont
                 AddAppointmentFragment fragment = new AddAppointmentFragment();
                 fragment.setCancelable(true);
                 Bundle data = new Bundle();
-                data.putSerializable("dashboard",dashboard);
+                data.putSerializable("dashboard", dashboard);
                 fragment.setArguments(data);
-                fragment.show(getSupportFragmentManager(),"KKKKKKK");
+                fragment.show(getSupportFragmentManager(), "KKKKKKK");
             }
         });
 
@@ -70,13 +70,13 @@ public class AppointmentActivity extends BaseActivity implements AppointmentCont
 
     private void initView() {
         recyclerView = findViewById(R.id.recyclerview);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         appointmentResponseList = new ArrayList<>();
         adapter = new AppointmentAdapter(appointmentResponseList, new AppointmentAdapter.CallClickListener() {
             @Override
             public void OnCallClick(AppointmentResponse appointmentResponse) {
-                dialCall(appointmentResponse.getClient().getPhone_one(),appointmentResponse);
+                dialCall(appointmentResponse.getClient().getPhone_one(), appointmentResponse);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -84,10 +84,10 @@ public class AppointmentActivity extends BaseActivity implements AppointmentCont
 
     private void dialCall(String phone_one, AppointmentResponse appointmentResponse) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Did you want to call, "+appointmentResponse.getClient().getName()+"?");
+        builder.setMessage("Did you want to call, " + appointmentResponse.getClient().getName() + "?");
         builder.setCancelable(true);
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE )!= PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
         }
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

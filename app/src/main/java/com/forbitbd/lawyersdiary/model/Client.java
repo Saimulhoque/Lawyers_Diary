@@ -1,6 +1,7 @@
 package com.forbitbd.lawyersdiary.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Client implements Serializable {
 
@@ -10,8 +11,8 @@ public class Client implements Serializable {
     private String phone_two;
     private String address;
     private String email;
-    private String date_of_birth;
-    private String reg_date;
+    private Date date_of_birth;
+    private Date reg_date;
     private String lawyer_id;
 
     public Client() {
@@ -57,19 +58,19 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public String getDate_of_birth() {
+    public Date getDate_of_birth() {
         return date_of_birth;
     }
 
-    public void setDate_of_birth(String date_of_birth) {
+    public void setDate_of_birth(Date date_of_birth) {
         this.date_of_birth = date_of_birth;
     }
 
-    public String getReg_date() {
+    public Date getReg_date() {
         return reg_date;
     }
 
-    public void setReg_date(String reg_date) {
+    public void setReg_date(Date reg_date) {
         this.reg_date = reg_date;
     }
 

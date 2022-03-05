@@ -16,12 +16,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.forbitbd.lawyersdiary.R;
+import com.forbitbd.lawyersdiary.model.Lawyer;
 import com.forbitbd.lawyersdiary.model.Settings;
 import com.forbitbd.lawyersdiary.ui.aboutus.AboutUsActivity;
+import com.forbitbd.lawyersdiary.ui.cases.CasesActivity;
 import com.forbitbd.lawyersdiary.ui.editprofile.EditProfileActivity;
 import com.forbitbd.lawyersdiary.ui.main.Communicator;
+import com.forbitbd.lawyersdiary.ui.main.MainActivity;
 import com.forbitbd.lawyersdiary.ui.privacypolicy.PrivacyPolicyActivity;
 import com.forbitbd.lawyersdiary.utils.AppPreference;
+import com.forbitbd.lawyersdiary.utils.Constant;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -40,6 +44,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
     private Button btneditprofile;
     private Communicator communicator;
     private FirebaseAuth mAuth;
+    private Lawyer lawyer;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -69,9 +74,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         btneditprofile.setOnClickListener(this);
 
         useremail.setText(AppPreference.getInstance(getContext()).getLawyer().getEmail());
-
-//        Picasso.get().load(AppPreference.getInstance(getContext()).getLawyer().getImage()).into(userimage);
-//        username.setText(AppPreference.getInstance(getContext()).getLawyer().get_id());
+        Picasso.get().load(AppPreference.getInstance(getContext()).getLawyer().getImage()).into(userimage);
+        username.setText(AppPreference.getInstance(getContext()).getLawyer().getName());
 
         recyclerView = view.findViewById(R.id.recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
@@ -132,6 +136,8 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(getContext(), EditProfileActivity.class));
+        Intent intent = new Intent(getContext(), EditProfileActivity.class);
+        intent.putExtra(Constant.LAWYER, lawyer);
+        startActivity(intent);
     }
 }

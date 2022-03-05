@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.forbitbd.lawyersdiary.R;
 import com.forbitbd.lawyersdiary.model.Dashboard;
 import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
-import com.forbitbd.lawyersdiary.ui.main.MainActivity;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,6 +28,7 @@ public class BaseActivity extends AppCompatActivity {
 
     private GoogleSignInClient client;
     private FirebaseAuth mAuth;
+//    private AdView mAdView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,12 +52,19 @@ public class BaseActivity extends AppCompatActivity {
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
     }
 
+
 //    private void loadLocale() {
 //        if (AppPreference.getInstance(this).getLanguage().equals("EN")){
 //            setLocale("en");
 //        }else {
 //            setLocale("bn");
 //        }
+//    }
+
+//    public void loadBannerAd(int id){
+//        mAdView = findViewById(id);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
 //    }
 
     public void loadFragment(Fragment fragment){

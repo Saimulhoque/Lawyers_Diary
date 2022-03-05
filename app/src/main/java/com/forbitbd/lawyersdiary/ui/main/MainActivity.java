@@ -19,9 +19,9 @@ import com.forbitbd.lawyersdiary.model.Dashboard;
 import com.forbitbd.lawyersdiary.ui.add_case_date.AddCaseDateActivity;
 import com.forbitbd.lawyersdiary.ui.addcase.AddCaseActivity;
 import com.forbitbd.lawyersdiary.ui.addcasefees.AddCaseFeesActivity;
-import com.forbitbd.lawyersdiary.ui.addcasetype.AddCaseTypeFragment;
-import com.forbitbd.lawyersdiary.ui.addclient.AddClientFragment;
-import com.forbitbd.lawyersdiary.ui.addcourt.AddCourtFragment;
+import com.forbitbd.lawyersdiary.ui.home.addcasetype.AddCaseTypeFragment;
+import com.forbitbd.lawyersdiary.ui.home.addclient.AddClientFragment;
+import com.forbitbd.lawyersdiary.ui.home.addcourt.AddCourtFragment;
 import com.forbitbd.lawyersdiary.ui.appointment.AppointmentActivity;
 import com.forbitbd.lawyersdiary.ui.calender.CalenderActivity;
 import com.forbitbd.lawyersdiary.ui.cases.CasesActivity;
@@ -36,8 +36,6 @@ import com.forbitbd.lawyersdiary.ui.settings.SettingsFragment;
 import com.forbitbd.lawyersdiary.utils.AppPreference;
 import com.forbitbd.lawyersdiary.utils.BaseActivity;
 import com.forbitbd.lawyersdiary.utils.Constant;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends BaseActivity implements MainContract.View, Communicator {
